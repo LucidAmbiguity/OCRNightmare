@@ -53,3 +53,41 @@ create a .env add to .gitignore
     PYTHONPATH=< your_path_to_ocrn >/OCRNightmare/backend
     DATABASE_URL=mysql://<username>@<your_db_host>/<db_name>
     TEST_DATABASE_URL=mysql://<username>@<your_db_host>/<db_name>
+
+Start this file
+
+1. one
+   * nested
+
+## Testing
+
+Ready for first Test
+
+1. Red
+   * ok my app will expect to find some things in the environment
+   * test_config_class_exists_and_has_expected_attributes()
+
+1. Make it Green
+   * Create Config and env files
+      a fail
+   * Made a Diag test that always fail to reveal issue
+   * Fix Dev environment issue
+   * Green
+
+1. Refactor
+   * setup a file structure for tests
+   * disable diag test as it is extraneous to most systems and will be flaky
+
+1. Red
+   * its a web app needs a root/home page
+   * test_home_page_get()
+
+1. Make it Green
+   * create app module
+   * create default route /
+   * Green
+
+1. Refactor
+   * flesh out directory structure
+   * do a compile and browser verify
+   * commit back end structure with issue tag in commit message
