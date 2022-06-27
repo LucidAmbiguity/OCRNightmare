@@ -39,6 +39,4 @@ with some github actions maybe?
 
 ## Other .md files of interest
 
-
 [Dev Journey](../master/DevJourney.md)
-
