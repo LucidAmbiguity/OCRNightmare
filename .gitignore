@@ -20,3 +20,4 @@ backend.bat
 backendTerminal.bat
 backendShell.bat
 !/envHelpers/*
+.vscode/settings.json
