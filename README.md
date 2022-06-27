@@ -32,8 +32,13 @@ Frontend in React
 Backend Python Flask API
 
 Version
-This is Still in a Pre Alpha Stage Setting Up the React and Flask enviroments.
+This is Still in a Pre Beta Stage Setting Up the React and Flask environments.
 
 Intended Workflow TDD and Trunk based development
+with some github actions maybe?
 
-yay test
+## Other .md files of interest
+
+
+[Dev Journey](../blob/master/DevJourney.md)
+
