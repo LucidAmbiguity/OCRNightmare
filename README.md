@@ -34,4 +34,4 @@ Backend Python Flask API
 Version
 This is Still in a Pre Alpha Stage Setting Up the React and Flask enviroments.
 
-Intended Workflow TDD and Trunk based development also gonna try monorepo
+Intended Workflow TDD and Trunk based development 
