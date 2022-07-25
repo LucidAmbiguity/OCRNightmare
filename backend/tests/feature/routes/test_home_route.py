@@ -1,7 +1,5 @@
 """Test the default home route '/'"""
 
-from app import create_app
-
 
 def test_home_page_get(test_client):
     """
