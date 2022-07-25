@@ -21,5 +21,5 @@ def auth_root():
                 "register": "register"
                 }
             },
-            "status": "ok"
+            "status": "OK"
             }, 200, {'WWW.Authentication': 'Basic realm: "login required"'}

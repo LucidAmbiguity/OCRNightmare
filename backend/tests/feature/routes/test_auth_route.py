@@ -51,4 +51,20 @@ def test_auth_page_get_response_shape(test_client):
     assert 'register' in response.json['result']['links'].keys()
 
 
+def test_auth_page_get_response_value(test_client):
+    """
+    GIVEN a Flask application
+    WHEN the '/' page is posted to (GET)
+    THEN check shape of returned response
 
+    """
+
+    response = test_client.get('/auth')
+    print(type(response.json['status']))
+    
+    assert response.json['code'] is 200
+    assert response.json['status'] == "OK"
+    assert response.json['messages'][0]['code'] == 'A00001'
+    assert response.json['messages'][0]['text'] == 'Success.'
+    assert response.json['result']['links']['login'] == 'login'
+    assert response.json['result']['links']['register'] == 'register'
