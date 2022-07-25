@@ -7,7 +7,7 @@ from app import create_app
 def app():
     """
     Yields:
-        app: An AppContext 
+        app: An AppContext
     """
     created_app = create_app()
     yield created_app
