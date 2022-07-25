@@ -16,6 +16,3 @@ def test_config_class_exists_and_has_expected_attributes():
     assert hasattr(Config,'SQLALCHEMY_DATABASE_URI')
     assert hasattr(Config,'SQLALCHEMY_TRACK_MODIFICATIONS')
   # ['FLASK_APP', 'SECRET_KEY', 'SQLALCHEMY_DATABASE_URI', 'SQLALCHEMY_TRACK_MODIFICATIONS']
-
-
-
