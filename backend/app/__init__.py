@@ -24,6 +24,14 @@ def create_app():
         """Base Path"""
         return {'index':'Index Page'}
 
+    
+
+    @app.route("/auth/", methods=['GET', 'POST'])
+    @app.route("/auth", methods=['GET', 'POST'])
+    def auth_root():
+        """Root route of App Module"""
+        return {'auth':'auth root'}
+
    
     @app.errorhandler(HTTPException)
     def handle_exception_http_exception(e):
