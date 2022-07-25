@@ -1,6 +1,5 @@
 """test"""
 from config import Config
-from app import create_app
 
 def test_config_class_exists_and_has_expected_attributes():
     """
