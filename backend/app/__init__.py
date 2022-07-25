@@ -19,18 +19,17 @@ def create_app():
     
     app.config.from_object(Config)
     
+
+    # # Register the blueprints
+    from .auth import auth
+    app.register_blueprint(auth, url_prefix="/auth")
+
+
     @app.route('/')
     def index():
         """Base Path"""
         return {'index':'Index Page'}
 
-    
-
-    @app.route("/auth/", methods=['GET', 'POST'])
-    @app.route("/auth", methods=['GET', 'POST'])
-    def auth_root():
-        """Root route of App Module"""
-        return {'auth':'auth root'}
 
    
     @app.errorhandler(HTTPException)
