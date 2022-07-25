@@ -15,7 +15,6 @@ def test_home_page_get(test_client):
 
     response = test_client.get('/')
     assert response.status_code == 200
-    assert b"Microblog" not in response.data
     assert b"Index Page" in response.data
 
 def test_home_page_post_returns_status_error(test_client):
