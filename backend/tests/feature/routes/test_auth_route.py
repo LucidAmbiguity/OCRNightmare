@@ -13,3 +13,15 @@ def test_auth_page_get(test_client):
 
     response = test_client.get('/auth')
     assert response.status_code == 200
+
+
+def test_auth_page_get_returns_json(test_client):
+    """
+    GIVEN a Flask application
+    WHEN the '/' page is posted to (GET)
+    THEN check that a '405' status code is returned
+
+    """
+
+    response = test_client.post('/')
+    assert response.json is not None
