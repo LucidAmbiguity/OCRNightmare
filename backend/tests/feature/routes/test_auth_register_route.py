@@ -33,7 +33,7 @@ def test_auth_register_page_get_returns_json(test_client):
     assert response.json is not None
 
 
-def test_auth_register_page_post(test_client):
+def test_auth_register_page_post_response_shape(test_client):
     """
     GIVEN a Flask application
     WHEN the '/auth/register' page is posted to (POST)
