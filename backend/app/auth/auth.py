@@ -64,7 +64,6 @@ def _format(
 def register_user():
     """Create a User"""
     request_auth = request.authorization
-    print('auth', request_auth)
     if (not request_auth
             or not request_auth.username
             or not request_auth.password):

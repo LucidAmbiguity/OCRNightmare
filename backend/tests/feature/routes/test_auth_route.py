@@ -60,7 +60,6 @@ def test_auth_page_get_response_value(test_client):
     """
 
     response = test_client.get('/auth')
-    print(type(response.json['status']))
     
     assert response.json['code'] is 200
     assert response.json['status'] == "OK"

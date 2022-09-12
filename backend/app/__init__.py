@@ -12,12 +12,16 @@ from config import Config
 # from flask_cors import CORS, cross_origin
 
 
-def create_app():
+def create_app(test_config: str=None) -> Flask:
     """the app factory"""
     # app = Flask(__name__, instance_relative_config=True)
     app = Flask(__name__)
 
-    app.config.from_object(Config)
+    if test_config is None:
+        app.config.from_object(Config)
+    else:
+        from config import TestConfig  # pylint: disable=import-outside-toplevel
+        app.config.from_object(TestConfig)
 
     # # Register the blueprints
     from .auth import auth # pylint:disable=import-outside-toplevel
@@ -49,7 +53,6 @@ def create_app():
     @app.errorhandler(MethodNotAllowed)
     def handle_exception_method_not_allowed(err):
         """Return JSON instead of HTML for HTTP errors."""
-        print('handle_exception_method_not_allowed')
         # start with the correct headers and status code from the error
         response = err.get_response()
         # replace the body with JSON
