@@ -4,6 +4,7 @@
 /data
 Notes.txt
 *.ipynb
+/thunder_tests
 
 __pycache__/
 
@@ -21,3 +22,7 @@ backendTerminal.bat
 backendShell.bat
 !/envHelpers/*
 .vscode/settings.json
+thunder-tests/thunderActivity.json
+thunder-tests/thunderCollection.json
+thunder-tests/thunderclient.json
+thunder-tests/thunderEnvironment.json

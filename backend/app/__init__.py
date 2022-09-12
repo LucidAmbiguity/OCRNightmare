@@ -21,7 +21,7 @@ def create_app():
 
     # # Register the blueprints
     from .auth import auth # pylint:disable=import-outside-toplevel
-    app.register_blueprint(auth, url_prefix="/auth")
+    app.register_blueprint(auth, url_prefix='/auth')
 
     @app.route('/')
     def index():
@@ -35,34 +35,34 @@ def create_app():
         response = err.get_response()
         # replace the body with JSON
         response.data = json.dumps({
-            "status": "error",
-            "code": err.code,
-            "messages" : [{
-                    "code": err.code,
-                    "text": err.name,
+            'status': 'error',
+            'code': err.code,
+            'messages' : [{
+                    'code': err.code,
+                    'text': err.name,
                   }],
-            "result": {"description": err.description}
+            'result': {'description': err.description}
         })
-        response.content_type = "application/json"
+        response.content_type = 'application/json'
         return response
 
     @app.errorhandler(MethodNotAllowed)
     def handle_exception_method_not_allowed(err):
         """Return JSON instead of HTML for HTTP errors."""
-        print("handle_exception_method_not_allowed")
+        print('handle_exception_method_not_allowed')
         # start with the correct headers and status code from the error
         response = err.get_response()
         # replace the body with JSON
         response.data = json.dumps({
-            "status": "error",
-            "code": err.code,
-            "messages" : [{
-                    "code": err.code,
-                    "text": err.name,
+            'status': 'error',
+            'code': err.code,
+            'messages' : [{
+                    'code': err.code,
+                    'text': err.name,
                   }],
-            "result": {"description": err.description}
+            'result': {'description': err.description}
         })
-        response.content_type = "application/json"
+        response.content_type = 'application/json'
         return response
 
     return app
