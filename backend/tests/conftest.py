@@ -2,6 +2,14 @@
 import pytest
 
 from app import create_app
+from app.interfaces.db_interface import DBInterface
+
+# pylint: disable=unused-import
+from tests.mocked_models import (
+    new_user1,
+    user1_creds,
+    # new_user2,
+)
 
 @pytest.fixture(scope='module')
 def app():
@@ -38,4 +46,20 @@ def test_client(app): # pylint: disable=redefined-outer-name
         with app.app_context():
             yield testing_client  # this is where the testing happens!
 
-#     
+@pytest.fixture(scope='module')
+def test_client_db(test_client): # pylint: disable=redefined-outer-name
+    """
+    Yields:
+        testing_client with app context
+        and an active Fresh empty testing DB
+
+    This is still in Danger Mode.
+    """
+
+    db_inter = DBInterface()
+    db_inter.create_all()
+
+    yield  test_client # this is where the testing happens!
+
+    db_inter.close_and_drop()
+

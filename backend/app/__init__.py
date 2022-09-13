@@ -5,7 +5,7 @@ from werkzeug.exceptions import MethodNotAllowed,HTTPException
 
 from flask import Flask,jsonify
 # from .extensions import db,ma,migrate,bcrypt,cors
-
+from .extensions import db, ma
 
 from config import Config
 
@@ -22,6 +22,12 @@ def create_app(test_config: str=None) -> Flask:
     else:
         from config import TestConfig  # pylint: disable=import-outside-toplevel
         app.config.from_object(TestConfig)
+
+    # # Initialization of extension instances
+    db.init_app(app) # type: ignore[misc]
+    ma.init_app(app) # type: ignore[misc]
+
+
 
     # # Register the blueprints
     from .auth import auth # pylint:disable=import-outside-toplevel
