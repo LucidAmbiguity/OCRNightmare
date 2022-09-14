@@ -5,7 +5,7 @@ from werkzeug.exceptions import MethodNotAllowed,HTTPException
 
 from flask import Flask,jsonify
 # from .extensions import db,ma,migrate,bcrypt,cors
-from .extensions import db, ma
+from .extensions import db, ma, migrate, bcrypt, cors
 
 from config import Config
 
@@ -26,7 +26,9 @@ def create_app(test_config: str=None) -> Flask:
     # # Initialization of extension instances
     db.init_app(app) # type: ignore[misc]
     ma.init_app(app) # type: ignore[misc]
-
+    migrate.init_app(app, db) # type: ignore[misc]
+    bcrypt.init_app(app) # type: ignore[misc]
+    cors.init_app(app, supports_credentials=True) # type: ignore[misc]
 
 
     # # Register the blueprints

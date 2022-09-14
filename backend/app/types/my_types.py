@@ -1,7 +1,7 @@
 """My custom Types"""
 
 from typing import   NamedTuple, TypedDict
-from typing import TYPE_CHECKING
+# from typing import TYPE_CHECKING
 
 # if TYPE_CHECKING:
 #     from app.models import ColIndex

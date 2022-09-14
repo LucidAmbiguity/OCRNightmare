@@ -64,6 +64,6 @@ def test_auth_page_get_response_value(test_client):
     assert response.json['code'] is 200
     assert response.json['status'] == "OK"
     assert response.json['messages'][0]['code'] == 'A00001'
-    assert response.json['messages'][0]['text'] == 'Success.'
+    assert response.json['messages'][0]['text'] == 'authentication root'
     assert response.json['result']['links']['login'] == 'login'
     assert response.json['result']['links']['register'] == 'register'

@@ -23,9 +23,9 @@ def app():
     created_app.config.update({
             'TESTING': True,
         })
-    created_app.config.update({
-        'SQLALCHEMY_DATABASE_URI':'sqlite:///:memory:'  # pylint: disable=line-too-long
-        })
+    # created_app.config.update({
+    #     'SQLALCHEMY_DATABASE_URI':'sqlite:///:memory:'  # pylint: disable=line-too-long
+    #     })
     # other setup can go here
 
     yield created_app
