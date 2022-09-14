@@ -44,8 +44,6 @@ def test_auth_register_page_headers_contains_basic_auth_info_for_missing_auth_in
     assert  is_response_shape_error(response_no_user.json) is True
     assert  is_response_shape_error(response_no_pass.json) is True
 
-    assert response_none.json['messages'][0]['code'] == 'AR0002'
-    assert response_none.json['messages'][0]['text'] == 'Username and Password Required'
     assert response_no_user.json['messages'][0]['code'] == 'AR0002'
     assert response_no_user.json['messages'][0]['text'] == 'Username and Password Required'
 
