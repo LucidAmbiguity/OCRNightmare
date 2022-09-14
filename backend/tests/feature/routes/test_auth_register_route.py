@@ -21,7 +21,7 @@ def test_auth_register_page_GET_returns_405(test_client):
 def test_auth_register_page_GET_returns_json(test_client):
 
     response = test_client.get(Path)
-    
+
     assert response.json is not None
 
 
@@ -29,12 +29,12 @@ def test_auth_register_page_post_response_shape(test_client):
 
 
     response = test_client.post(Path)
-
+    assert  response.status_code == 401
     assert  is_response_shape_error(response.json) is True
 
-    
+
 def test_auth_register_page_headers_contains_basic_auth_info_for_missing_auth_info(test_client):
- 
+
     credentials_nu = b64encode(b':barkbark').decode('utf-8')
     credentials_np = b64encode(b'TEST1:').decode('utf-8')
 
@@ -45,15 +45,15 @@ def test_auth_register_page_headers_contains_basic_auth_info_for_missing_auth_in
     assert  is_response_shape_error(response_none.json) is True
     assert  is_response_shape_error(response_no_user.json) is True
     assert  is_response_shape_error(response_no_pass.json) is True
-    
+
     assert response_none.json['messages'][0]['code'] == 'AR0002'
     assert response_none.json['messages'][0]['text'] == 'Username and Password Required'
     assert response_no_user.json['messages'][0]['code'] == 'AR0002'
     assert response_no_user.json['messages'][0]['text'] == 'Username and Password Required'
-    
+
     assert response_no_pass.json['messages'][0]['code'] == 'AR0002'
     assert response_no_pass.json['messages'][0]['text'] == 'Username and Password Required'
-    
+
     assert response_no_user.json['messages'][1]['code'] == 'AR0003'
     assert response_no_user.json['messages'][1]['text'] == "Basic realm: 'login required'"
 
@@ -78,10 +78,10 @@ def test_username_less_than_3_is_error(test_client):
     assert response.json['messages'][1]['code'] == 'AR0003'
     assert response.json['messages'][1]['text'] == "Basic realm: 'login required'"
 
-    
+
 @patch('app.interfaces.db_user_if.DBUserI.get_user_by_username', return_value = 'not None')
 def test_existing_username_fails_to_register(my_mock,test_client,user1_creds):
-    
+
     response = test_client.post(Path, headers={'Authorization': f'Basic {user1_creds[0]}'})
     # print('test_existing_username_fails_to_register',response.json)
     # print(user1_creds)
@@ -101,7 +101,7 @@ def test_short_password_fails_to_register(my_mock,test_client):
     my_creds = f'{username}:{password}'
     my_creds_ = bytes(my_creds, 'utf-8')
     credentials = b64encode(my_creds_).decode('utf-8')
-    
+
     response = test_client.post(Path, headers={'Authorization': f'Basic {credentials}'})
     # print('test_existing_username_fails_to_register',response.json)
     # print(user1_creds)
@@ -123,7 +123,7 @@ def test_valid_creds_fail_in_db_creation_unknown_failure(a,b,test_client):
     my_creds = f'{username}:{password}'
     my_creds_ = bytes(my_creds, 'utf-8')
     credentials = b64encode(my_creds_).decode('utf-8')
-    
+
     response = test_client.post(Path, headers={'Authorization': f'Basic {credentials}'})
 
     assert is_response_shape_error(response.json) is True
@@ -145,9 +145,9 @@ def test_valid_creds_do_register(a,b,test_client):
     my_creds = f'{username}:{password}'
     my_creds_ = bytes(my_creds, 'utf-8')
     credentials = b64encode(my_creds_).decode('utf-8')
-    
+
     response = test_client.post(Path, headers={'Authorization': f'Basic {credentials}'})
-    
+
     assert is_response_shape_success(response.json) is True
     assert response.json['messages'][0]['code'] == 'AR0010'
     assert response.json['messages'][0]['text'] == 'Register Successful'

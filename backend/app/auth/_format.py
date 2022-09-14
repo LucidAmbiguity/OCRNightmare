@@ -1,7 +1,7 @@
 """ Module return Format """
 
 from typing import Optional, Union
-from flask import  make_response
+from flask import  make_response,Response
 
 
 def _format(
@@ -9,7 +9,7 @@ def _format(
         status:str='OK',
         code:int=200,
         messages:Optional[list[tuple[str,str]]]=None,
-    )->dict:
+    )->Response:
 
     if result is None:
         result = {'links': {
