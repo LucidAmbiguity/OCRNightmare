@@ -38,11 +38,9 @@ def test_auth_register_page_headers_contains_basic_auth_info_for_missing_auth_in
     credentials_nu = b64encode(b':barkbark').decode('utf-8')
     credentials_np = b64encode(b'TEST1:').decode('utf-8')
 
-    response_none = test_client.post(Path)
     response_no_user = test_client.post(Path, headers={'Authorization': f'Basic {credentials_nu}'})
     response_no_pass = test_client.post(Path, headers={'Authorization': f'Basic {credentials_np}'})
 
-    assert  is_response_shape_error(response_none.json) is True
     assert  is_response_shape_error(response_no_user.json) is True
     assert  is_response_shape_error(response_no_pass.json) is True
 
