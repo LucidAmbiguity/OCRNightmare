@@ -11,7 +11,14 @@ class DBUserI:
     """ User Interface """
     def get_user_by_username(self, username:str)->Optional[User]:
         return cast( User, User.query.filter_by(name=username).first()) # type: ignore[misc]
+    
+    def get_user_by_id(self, uid:int)->Optional[User]:
+        return cast( User, User.query.filter_by(id=uid).first()) # type: ignore[misc]
+    
+    def get_user_by_public_id(self, public_id:str)->Optional[User]:
+        return cast( User, User.query.filter_by(public_id=public_id).first()) # type: ignore[misc]
 
+    
     def new_user(self,new_user:NewUserTup)->User:
         new_user_db = User(
                 public_id = new_user.public_id,

@@ -1,6 +1,6 @@
 """Test the auth register route '/auth/register'"""
 
-# pylint: disable=invalid-name
+# pylint: disable=invalid-name unused-argument
 
 from base64 import b64encode
 from unittest.mock import patch

@@ -5,10 +5,22 @@ from typing import   NamedTuple, TypedDict
 
 # if TYPE_CHECKING:
 #     from app.models import ColIndex
+AToken = str
 
 
+class MockUser(NamedTuple):
+    public_id: str
+    name: str
+    password: str
+    admin: bool
 
+class PassId(NamedTuple):
+    password: str
+    public_id: str
 
+class PassIdNone(NamedTuple):
+    password: str=None
+    public_id: str=None
 
 class NewUserTup(NamedTuple):
     public_id: str

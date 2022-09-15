@@ -32,7 +32,7 @@ def create_app(test_config: str=None) -> Flask:
 
 
     # # Register the blueprints
-    from .auth import auth # pylint:disable=import-outside-toplevel
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
     app.register_blueprint(auth, url_prefix='/auth')
 
     @app.route('/')
