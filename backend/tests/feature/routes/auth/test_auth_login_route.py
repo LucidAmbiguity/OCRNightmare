@@ -8,7 +8,7 @@ from werkzeug.security import generate_password_hash
 
 from base64 import b64encode
 # from tests.helpers import is_response_shape_success
-from tests.helpers import is_response_shape_error
+from tests.helpers import is_response_shape_auth_error
 Path = '/auth/login'
 
 
@@ -25,7 +25,7 @@ def test_auth_login_page_post_response_shape(test_client):
     response = test_client.post(Path)
 
     assert  response.status_code == 401
-    assert  is_response_shape_error(response.json) is True
+    assert  is_response_shape_auth_error(response.json) is True
 
 def test_auth_login_page_headers_contains_basic_auth_info_for_missing_auth_info(test_client):
 
@@ -35,8 +35,8 @@ def test_auth_login_page_headers_contains_basic_auth_info_for_missing_auth_info(
     response_no_user = test_client.post(Path, headers={'Authorization': f'Basic {credentials_nu}'})
     response_no_pass = test_client.post(Path, headers={'Authorization': f'Basic {credentials_np}'})
 
-    assert  is_response_shape_error(response_no_user.json) is True
-    assert  is_response_shape_error(response_no_pass.json) is True
+    assert  is_response_shape_auth_error(response_no_user.json) is True
+    assert  is_response_shape_auth_error(response_no_pass.json) is True
 
     assert response_no_user.json['messages'][0]['code'] == 'AL0012'
     assert response_no_user.json['messages'][0]['text'] == 'Username and Password Required'

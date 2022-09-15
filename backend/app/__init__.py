@@ -34,6 +34,8 @@ def create_app(test_config: str=None) -> Flask:
     # # Register the blueprints
     from .routes.auth import auth # pylint:disable=import-outside-toplevel
     app.register_blueprint(auth, url_prefix='/auth')
+    from .routes.admin import admin # pylint:disable=import-outside-toplevel
+    app.register_blueprint(admin, url_prefix='/admin')
 
     @app.route('/')
     def index():
