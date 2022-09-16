@@ -7,6 +7,7 @@ from flask import request, current_app
 
 from app.routes.auth import auth # pylint: disable=import-self
 from app.repositories.user_repo import UserRepo
+from app.repositories.users_repo import UsersRepo
 from app.types.my_types import NewUserTup
 from app.constants.AUTH import REGISTER,LOGIN
 from app.services.login_s import login_service
@@ -65,7 +66,7 @@ def register_user():
         return _my_format(REGISTER.ShortPass)
 
     new_user_t = NewUserTup(str(uuid.uuid4()), username, password, False)
-    new_user = UserRepo().new_user(new_user_t)
+    new_user = UsersRepo().new_user(new_user_t)
 
     if new_user is None:
         return _my_format(REGISTER.CreateError)

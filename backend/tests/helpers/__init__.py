@@ -51,7 +51,7 @@ def is_response_shape_admin(res_object):
 
         isinstance(res_object['result'],dict)
     ])
-    
+
 # def is_response_shape_admin_error(res_object):
 #     return all([
 #         'code'     in res_object.keys(),

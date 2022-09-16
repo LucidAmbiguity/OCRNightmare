@@ -4,22 +4,20 @@
 
 from app.models import (
     user_schema,
-    # users_schema,
+    users_schema,
 )
 # from app.ocrnightmare.helpers.my_types import UserT
 from app.interfaces.db_user_if import DBUserI
 
-from typing import TYPE_CHECKING, Optional, Union
-
-from app.types.my_types import PassId, PassIdNone
+from typing import TYPE_CHECKING, Optional
 
 
 if TYPE_CHECKING:
     from app.models import User
-    from app.types import UserT
+    from app.types import UserT,NewUserTup
 
 
-class UserRepo:
+class UsersRepo:
     """A User Repository"""
 
     def _return_logic(self,user_db:Optional['User'])->Optional['UserT']:
@@ -56,17 +54,16 @@ class UserRepo:
             self._user_db = self._db_u_i.get_user_by_public_id(self._public_id)
             self._has_user()
 
-    def get_user(self):
-        return self._return_logic(self._user_db)
-
-    def get_user_password(self)->str:
+    def get_user_by_username(self)->Optional['UserT']:
         user_db = self._db_u_i.get_user_by_username(self._username)
-        if user_db is None:
-            return None
-        return user_db.password
+        return self._return_logic(user_db)
 
-    def get_user_password_and_pubid(self)->Union[PassId,PassIdNone]:
-        if self.has_user:
-            return PassId(self._user_db.password,self._user_db.public_id)
-        return PassIdNone()
+    def new_user(self,new_user_t:'NewUserTup')->Optional['UserT']:
+        user_db = self._db_u_i.new_user(new_user_t)
+        return self._return_logic(user_db)
 
+    def get_all_users(self)->list[Optional['UserT']]:
+        users_db: list['User'] = self._db_u_i.get_all_users()
+        users_: list[Optional['UserT']] = users_schema.dump(users_db)
+        return users_ # type: ignore[misc]
+        

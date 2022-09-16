@@ -1,7 +1,8 @@
-""" ADMIN User Route Controller """
+""" ADMIN Route Controller """
 
 # import uuid
 from typing import Optional, TYPE_CHECKING
+from ._format import _format
 # from flask import request, current_app
 
 
@@ -12,7 +13,10 @@ from app.constants.AUTH import REGISTER
 from app.constants.ADMIN import ADMIN
 # from app.services.login_s import login_service
 
-from ._format import _format
+from .users import users
+
+admin.register_blueprint(users, url_prefix='/users')
+
 
 if TYPE_CHECKING:
     from flask import Response
