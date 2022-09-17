@@ -1,3 +1,4 @@
+# pylint: disable=unused-argument
 """Test the default admin users route '/admin/users' """
 
 # from base64 import b64encode
