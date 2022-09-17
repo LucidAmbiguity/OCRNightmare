@@ -24,9 +24,9 @@ class User(db.Model): # type: ignore[name-defined]
     """
 
     # pylint: disable=no-member
-    id: int = db.Column(db.Integer, primary_key=True) # type: ignore[misc]
-    public_id: str = db.Column(db.String(50), unique=True) # type: ignore[misc]
-    name: str = db.Column(db.String(50), unique=True,) # type: ignore[misc]
+    id: int = db.Column(db.Integer, primary_key=True,nullable=False) # type: ignore[misc]
+    public_id: str = db.Column(db.String(50), unique=True,nullable=False) # type: ignore[misc]
+    name: str = db.Column(db.String(50), unique=True,nullable=False) # type: ignore[misc]
     password: str = db.Column(db.String(255), nullable=False) # type: ignore[misc]
     admin: bool = db.Column(db.Boolean, nullable=False) # type: ignore[misc]
     # pylint: enable=no-member
@@ -34,7 +34,7 @@ class User(db.Model): # type: ignore[name-defined]
     def __init__(self, **kwargs: Any) ->None:
         super().__init__(**kwargs) # type: ignore[misc]
         # print(kwargs)
-        self.public_id = kwargs.get('public_id', str(uuid.uuid4()))
+        self.public_id = kwargs.get('public_id', str(uuid.uuid4())) # type: ignore[misc]
         self.admin = cast(bool, kwargs.get('admin', False)) # type: ignore[misc]
         if cast(bool, kwargs.get('password', False)): # type: ignore[misc]
             self.password = generate_password_hash(

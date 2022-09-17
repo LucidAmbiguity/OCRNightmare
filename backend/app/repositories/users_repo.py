@@ -9,7 +9,7 @@ from app.models import (
 # from app.ocrnightmare.helpers.my_types import UserT
 from app.interfaces.db_user_if import DBUserI
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Optional, Type
 
 
 if TYPE_CHECKING:
@@ -19,6 +19,8 @@ if TYPE_CHECKING:
 
 class UsersRepo:
     """A User Repository"""
+
+    _user_db: Optional['User'] = None
 
     def _return_logic(self,user_db:Optional['User'])->Optional['UserT']:
         if user_db is None:
@@ -35,14 +37,14 @@ class UsersRepo:
             username:str=None,
             uid:int=None,
             public_id:str=None,
-            db_u_i=DBUserI,
+            db_u_i:Type[DBUserI]=DBUserI,
             ) ->None:
 
         self._db_u_i = db_u_i()
         self._username = username
         self._id = uid
         self._public_id = public_id
-        self._user_db = None
+
         self.has_user = False
         if username:
             self._user_db = self._db_u_i.get_user_by_username(self._username)
@@ -66,4 +68,3 @@ class UsersRepo:
         users_db: list['User'] = self._db_u_i.get_all_users()
         users_: list[Optional['UserT']] = users_schema.dump(users_db)
         return users_ # type: ignore[misc]
-        

@@ -10,16 +10,17 @@ from app.models import  User
 class DBUserI:
     """ User Interface """
 
-    def get_all_users(self):
-        return User.query.all()
+    def get_all_users(self)->list[User]:
+        result: list[User] = User.query.all()  # type: ignore[misc]
+        return result
 
-    def get_user_by_username(self, username:str)->Optional[User]:
+    def get_user_by_username(self, username:Optional[str])->Optional[User]:
         return cast( User, User.query.filter_by(name=username).first()) # type: ignore[misc]
 
-    def get_user_by_id(self, uid:int)->Optional[User]:
+    def get_user_by_id(self, uid:Optional[int])->Optional[User]:
         return cast( User, User.query.filter_by(id=uid).first()) # type: ignore[misc]
 
-    def get_user_by_public_id(self, public_id:str)->Optional[User]:
+    def get_user_by_public_id(self, public_id:Optional[str])->Optional[User]:
         return cast( User, User.query.filter_by(public_id=public_id).first()) # type: ignore[misc]
 
 

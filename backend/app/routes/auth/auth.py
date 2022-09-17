@@ -1,11 +1,11 @@
 """ Authentication Route Controller """
 
 import uuid
-from typing import Optional, TYPE_CHECKING
+from typing import  Optional, TYPE_CHECKING
 from flask import request, current_app
 
 
-from app.routes.auth import auth # pylint: disable=import-self
+from app.routes.auth import auth  # type: ignore[no-redef] # pylint: disable=import-self
 from app.repositories.user_repo import UserRepo
 from app.repositories.users_repo import UsersRepo
 from app.types.my_types import NewUserTup
@@ -19,33 +19,33 @@ if TYPE_CHECKING:
     # from app.types import
 
 
-def _my_format(api_code:tuple, result:Optional[dict] = None,x=None,code:int=401)->'Response':
-    print('result: ',api_code,result)
+def _my_format(api_code:tuple, result:Optional[dict] = None,x:str=None,code:int=401)->'Response':
+
     if x is None:
         return _format(
-            result,
+            result, # type: ignore[misc]
             code = code,
             messages = [
-                (api_code[0], api_code[1]),
+                (api_code[0], api_code[1]), # type: ignore[misc]
                 REGISTER.Realm],
         )
     return _format(
-            result,
+            result, # type: ignore[misc]
             code = code,
-            messages = [(api_code[0], api_code[1](x)),REGISTER.Realm],
+            messages = [(api_code[0], api_code[1](x)),REGISTER.Realm], # type: ignore[misc]
         )
 
 
-@auth.route('/', methods=['GET', 'POST'])
-@auth.route('', methods=['GET', 'POST'])
-def auth_root():
+@auth.route('/', methods=['GET', 'POST']) #type: ignore[attr-defined, misc]
+@auth.route('', methods=['GET', 'POST']) #type: ignore[attr-defined, misc]
+def auth_root()->'Response':
     """Root route of Auth Module"""
 
     return _my_format(REGISTER.ROOT,code=200)
 
 
-@auth.route('/register', methods=['POST'])
-def register_user():
+@auth.route('/register', methods=['POST']) #type: ignore[attr-defined, misc]
+def register_user()->'Response':
     """Create a User"""
     request_auth = request.authorization
     if (       not request_auth
@@ -88,11 +88,12 @@ def login_user()->'Response':
             or not request_auth.password):
         return _my_format(LOGIN.Missing)
 
-    access_token,pub_id = login_service(
-        (
+    req_tup =  (
             request_auth.username,
             request_auth.password
-        ),
+        )
+    (access_token,pub_id) = login_service(
+        req_tup,
         current_app,
     )
     print('login_user: ',access_token,pub_id)

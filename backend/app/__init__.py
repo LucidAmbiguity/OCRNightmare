@@ -1,3 +1,4 @@
+#type: ignore[misc]
 """Main App Entry Point"""
 import json
 # from werkzeug.exceptions import HTTPException
@@ -8,9 +9,10 @@ from flask import Flask,jsonify
 from .extensions import db, ma, migrate, bcrypt, cors
 
 from config import Config
-
+from typing import TYPE_CHECKING
 # from flask_cors import CORS, cross_origin
-
+if TYPE_CHECKING:
+    from flask import Response
 
 def create_app(test_config: str=None) -> Flask:
     """the app factory"""
@@ -37,13 +39,16 @@ def create_app(test_config: str=None) -> Flask:
     from .routes.admin import admin # pylint:disable=import-outside-toplevel
     app.register_blueprint(admin, url_prefix='/admin')
 
-    @app.route('/')
-    def index():
-        """Base Path"""
-        return {'index':'Index Page'}
 
-    @app.errorhandler(HTTPException)
-    def handle_exception_http_exception(err):
+
+
+    @app.route('/') #type: ignore[misc]
+    def index()->'Response':
+        """Base Path"""
+        return {'index':'Index Page'} # type: ignore[return-value]
+
+    @app.errorhandler(HTTPException) #type: ignore[misc]
+    def handle_exception_http_exception(err)->'Response':
         """Return JSON instead of HTML for HTTP errors."""
         # start with the correct headers and status code from the error
         response = err.get_response()
@@ -60,8 +65,8 @@ def create_app(test_config: str=None) -> Flask:
         response.content_type = 'application/json'
         return response
 
-    @app.errorhandler(MethodNotAllowed)
-    def handle_exception_method_not_allowed(err):
+    @app.errorhandler(MethodNotAllowed) #type: ignore[misc]
+    def handle_exception_method_not_allowed(err)->'Response':
         """Return JSON instead of HTML for HTTP errors."""
         # start with the correct headers and status code from the error
         response = err.get_response()

@@ -1,9 +1,9 @@
 """ The Models Module """
 
 from .models import (
-    
+
     User,
-   
+
 )
 
 

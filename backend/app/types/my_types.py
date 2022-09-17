@@ -1,7 +1,7 @@
 """My custom Types"""
 
-from dataclasses import asdict, astuple, dataclass, asdict
-from typing import   NamedTuple, TypedDict
+from dataclasses import dataclass
+from typing import   NamedTuple, Optional, TypedDict
 # from typing import TYPE_CHECKING
 
 # if TYPE_CHECKING:
@@ -20,7 +20,7 @@ class MockUser(NamedTuple):
 
 @dataclass()
 class MockUserAlso:
-    id:int
+    id: int # pylint: disable=invalid-name
     public_id: str
     name: str
     admin: bool
@@ -34,8 +34,8 @@ class PassId(NamedTuple):
     public_id: str
 
 class PassIdNone(NamedTuple):
-    password: str=None
-    public_id: str=None
+    password: Optional[str] = None
+    public_id: Optional[str] = None
 
 class NewUserTup(NamedTuple):
     public_id: str

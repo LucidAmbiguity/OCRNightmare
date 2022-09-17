@@ -1,0 +1,1206 @@
+============================= test session starts =============================
+platform win32 -- Python 3.9.2, pytest-7.1.2, pluggy-1.0.0
+rootdir: C:\xampp\htdocs\python\OCRNightmare\backend
+plugins: cov-3.0.0
+collected 30 items
+
+tests\feature\routes\test_home_route.py EEEEE                            [ 16%]
+tests\feature\routes\admin\test_admin_route.py EE                        [ 23%]
+tests\feature\routes\admin\test_admin_users_route.py EEE                 [ 33%]
+tests\feature\routes\auth\test_auth_login_route.py EEEEEE                [ 53%]
+tests\feature\routes\auth\test_auth_register_route.py EEEEEEEEE          [ 83%]
+tests\feature\routes\auth\test_auth_route.py EEEE                        [ 96%]
+tests\unit\config_env\test_config.py .                                   [100%]
+
+=================================== ERRORS ====================================
+____________________ ERROR at setup of test_home_page_get _____________________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+_________ ERROR at setup of test_home_page_post_returns_status_error __________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+________ ERROR at setup of test_home_page_post_returns_status_code_405 ________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+_____________ ERROR at setup of test_home_page_post_returns_json ______________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+______________ ERROR at setup of test_home_page_get_returns_json ______________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+____________________ ERROR at setup of test_admin_page_get ____________________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+_________________ ERROR at setup of test_admin_response_shape _________________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+___________ ERROR at setup of test_admin_users_page_get_returns_200 ___________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+______________ ERROR at setup of test_admin_users_response_shape ______________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+____________ ERROR at setup of test_admin_users_gets_list_of_users ____________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+___________ ERROR at setup of test_auth_login_page_GET_returns_405 ____________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+_________ ERROR at setup of test_auth_login_page_post_response_shape __________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+_ ERROR at setup of test_auth_login_page_headers_contains_basic_auth_info_for_missing_auth_info _
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+____________ ERROR at setup of test_auth_login_bad_username_fails _____________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+____________ ERROR at setup of test_auth_login_bad_password_fails _____________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+______________ ERROR at setup of test_auth_login_good_creds_pass ______________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+__________ ERROR at setup of test_auth_register_page_GET_returns_405 __________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+_________ ERROR at setup of test_auth_register_page_GET_returns_json __________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+________ ERROR at setup of test_auth_register_page_post_response_shape ________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+_ ERROR at setup of test_auth_register_page_headers_contains_basic_auth_info_for_missing_auth_info _
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+____________ ERROR at setup of test_username_less_than_3_is_error _____________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+_________ ERROR at setup of test_existing_username_fails_to_register __________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+___________ ERROR at setup of test_short_password_fails_to_register ___________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+___ ERROR at setup of test_valid_creds_fail_in_db_creation_unknown_failure ____
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+_______________ ERROR at setup of test_valid_creds_do_register ________________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+____________________ ERROR at setup of test_auth_page_get _____________________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+______________ ERROR at setup of test_auth_page_get_returns_json ______________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+_____________ ERROR at setup of test_auth_page_get_response_shape _____________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+_____________ ERROR at setup of test_auth_page_get_response_value _____________
+
+    @pytest.fixture(scope='module')
+    def app():
+        """
+        Yields:
+            app: An AppContext aware of testing DB
+    
+        This is still in Danger Mode.
+        """
+>       created_app = create_app(test_config=True)
+
+tests\conftest.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\__init__.py:35: in create_app
+    from .routes.auth import auth # pylint:disable=import-outside-toplevel
+app\routes\auth\__init__.py:6: in <module>
+    from .auth import auth # pylint: disable=wrong-import-position
+app\routes\auth\auth.py:13: in <module>
+    from app.services.login_s import login_service
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    """ Login Service """
+    
+    from typing import TYPE_CHECKING, Union
+    import jwt
+    from typing import Optional
+    from datetime import datetime, timedelta
+    from werkzeug.security import  check_password_hash
+    
+    from app.repositories.user_repo import UserRepo
+    from app.types.my_types import AToken
+    
+    if TYPE_CHECKING:
+        from flask import Flask
+    
+>   def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple(str,str),tuple(None,None)]:
+E   TypeError: tuple expected at most 1 argument, got 2
+
+app\services\login_s.py:15: TypeError
+=========================== short test summary info ===========================
+ERROR tests/feature/routes/test_home_route.py::test_home_page_get - TypeError...
+ERROR tests/feature/routes/test_home_route.py::test_home_page_post_returns_status_error
+ERROR tests/feature/routes/test_home_route.py::test_home_page_post_returns_status_code_405
+ERROR tests/feature/routes/test_home_route.py::test_home_page_post_returns_json
+ERROR tests/feature/routes/test_home_route.py::test_home_page_get_returns_json
+ERROR tests/feature/routes/admin/test_admin_route.py::test_admin_page_get - T...
+ERROR tests/feature/routes/admin/test_admin_route.py::test_admin_response_shape
+ERROR tests/feature/routes/admin/test_admin_users_route.py::test_admin_users_page_get_returns_200
+ERROR tests/feature/routes/admin/test_admin_users_route.py::test_admin_users_response_shape
+ERROR tests/feature/routes/admin/test_admin_users_route.py::test_admin_users_gets_list_of_users
+ERROR tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_page_GET_returns_405
+ERROR tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_page_post_response_shape
+ERROR tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_page_headers_contains_basic_auth_info_for_missing_auth_info
+ERROR tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_bad_username_fails
+ERROR tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_bad_password_fails
+ERROR tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_good_creds_pass
+ERROR tests/feature/routes/auth/test_auth_register_route.py::test_auth_register_page_GET_returns_405
+ERROR tests/feature/routes/auth/test_auth_register_route.py::test_auth_register_page_GET_returns_json
+ERROR tests/feature/routes/auth/test_auth_register_route.py::test_auth_register_page_post_response_shape
+ERROR tests/feature/routes/auth/test_auth_register_route.py::test_auth_register_page_headers_contains_basic_auth_info_for_missing_auth_info
+ERROR tests/feature/routes/auth/test_auth_register_route.py::test_username_less_than_3_is_error
+ERROR tests/feature/routes/auth/test_auth_register_route.py::test_existing_username_fails_to_register
+ERROR tests/feature/routes/auth/test_auth_register_route.py::test_short_password_fails_to_register
+ERROR tests/feature/routes/auth/test_auth_register_route.py::test_valid_creds_fail_in_db_creation_unknown_failure
+ERROR tests/feature/routes/auth/test_auth_register_route.py::test_valid_creds_do_register
+ERROR tests/feature/routes/auth/test_auth_route.py::test_auth_page_get - Type...
+ERROR tests/feature/routes/auth/test_auth_route.py::test_auth_page_get_returns_json
+ERROR tests/feature/routes/auth/test_auth_route.py::test_auth_page_get_response_shape
+ERROR tests/feature/routes/auth/test_auth_route.py::test_auth_page_get_response_value
+======================== 1 passed, 29 errors in 1.76s =========================
