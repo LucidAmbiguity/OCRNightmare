@@ -17,7 +17,6 @@ def test_admin_users_uid_page_get_returns_200(a, test_client):
     response = test_client.get(_path)
     assert response.status_code == 200
 
-# self._user_db = self._db_u_i.get_user_by_id(self._id)
 
 @patch('app.interfaces.db_user_if.DBUserI.get_user_by_id', return_value = user_mock1)
 def test_admin_users_uid_response_shape(a, test_client):
@@ -25,6 +24,7 @@ def test_admin_users_uid_response_shape(a, test_client):
     response = test_client.get(_path)
     assert response.status_code == 200
     assert is_response_shape_admin(response.json)
+
 
 @patch('app.interfaces.db_user_if.DBUserI.get_user_by_id', return_value = user_mock1)
 def test_admin_users_uid_gets_a_user(a, test_client):

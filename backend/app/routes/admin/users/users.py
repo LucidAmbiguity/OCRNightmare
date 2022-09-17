@@ -40,7 +40,7 @@ def users_root()->'Response':
 
     return _my_format(ADMIN.Users,code=200,result=result)
 
-@users.route('/<int:uid>', methods=['GET', 'POST']) #type: ignore[attr-defined, misc]
+@users.route('/<int:uid>', methods=['GET']) #type: ignore[attr-defined, misc]
 def users_test(uid:int)->'Response':
     _user_ = UserRepo(uid=uid).get_user()
 
@@ -50,5 +50,17 @@ def users_test(uid:int)->'Response':
 
     return _my_format(ADMIN.User,code=200,result=result)
 
+@users.route('/<int:uid>', methods=['DELETE']) # type: ignore[attr-defined,misc]
+def delete_user(uid:int)->dict:
 
+    success =  UserRepo(uid=uid).del_user()
+
+    if not success:
+        abort(404)
+    return _my_format(ADMIN.UserDel_,code=200,x=str(uid))
+    # return _format(
+    #     { 'success': success },
+    #     m_code='U00003',
+    #     m_text=f'del_user {uid} Successful.',
+    # )
 

@@ -72,3 +72,7 @@ class UserRepo:
             return PassId(self._user_db.password,self._user_db.public_id)
         return PassIdNone()
 
+    def del_user(self)->bool:
+        return self._db_u_i.del_user(self._user_db)
+
+

@@ -35,3 +35,11 @@ class DBUserI:
         db.session.commit() # type: ignore[misc] # pylint: disable=no-member
         db.session.refresh(new_user_db) # type: ignore[misc]
         return new_user_db
+
+    def del_user(self, user_db:Optional[User])->bool:
+        if user_db:
+            db.session.add(user_db)
+            db.session.delete(user_db)
+            db.session.commit()
+            return True
+        return False
