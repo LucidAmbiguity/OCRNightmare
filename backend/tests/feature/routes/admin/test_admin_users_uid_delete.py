@@ -35,7 +35,7 @@ def test_admin_users_uid_delete_response_shape(a,b, test_client):
 @patch('app.interfaces.db_user_if.DBUserI.get_user_by_id', return_value = user_mock1)
 def test_admin_users_uid_delete_deletes_a_user(a,b, test_client):
     response = test_client.delete(Path)
-    assert response.json['messages'][0]['text'] == 'User  1 : Has been deleted'
+    assert response.json['messages'][0]['text'] == 'User 1 : Has been deleted'
 
 user_mock2 = None
 @patch('app.interfaces.db_user_if.DBUserI.get_user_by_id', return_value = user_mock2)

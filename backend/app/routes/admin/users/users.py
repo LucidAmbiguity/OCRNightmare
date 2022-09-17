@@ -58,9 +58,14 @@ def delete_user(uid:int)->dict:
     if not success:
         abort(404)
     return _my_format(ADMIN.UserDel_,code=200,x=str(uid))
-    # return _format(
-    #     { 'success': success },
-    #     m_code='U00003',
-    #     m_text=f'del_user {uid} Successful.',
-    # )
+
+
+@users.route('/<pub_id>', methods=['DELETE']) # type: ignore[attr-defined,misc]
+def delete_user_by_pub_id(pub_id:str)->dict:
+
+    success =  UserRepo(public_id=pub_id).del_user()
+    if not success:
+        abort(404)
+
+    return _my_format(ADMIN.UserDel_,code=200,x=pub_id)
 
