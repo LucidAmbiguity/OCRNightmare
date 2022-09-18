@@ -26,7 +26,7 @@ def _my_format(api_code:tuple, result:Optional[dict] = None,x:str=None,code:int=
             result, # type: ignore[misc]
             code = code,
             messages = [
-                (api_code[0], api_code[1]), # type: ignore[misc]
+                api_code, # type: ignore[misc]
                 REGISTER.Realm],
         )
     return _format(

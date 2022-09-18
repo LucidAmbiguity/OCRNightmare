@@ -38,6 +38,8 @@ def create_app(test_config: str=None) -> Flask:
     app.register_blueprint(auth, url_prefix='/auth')
     from .routes.admin import admin # pylint:disable=import-outside-toplevel
     app.register_blueprint(admin, url_prefix='/admin')
+    from .routes.ocrnightmare import ocrnightmare # pylint:disable=import-outside-toplevel
+    app.register_blueprint(ocrnightmare, url_prefix='/ocrnightmare')
 
 
 

@@ -52,33 +52,18 @@ def is_response_shape_admin(res_object):
         isinstance(res_object['result'],dict)
     ])
 
-# def is_response_shape_admin_error(res_object):
-#     return all([
-#         'code'     in res_object.keys(),
-#         'messages' in res_object.keys(),
-#         'result'   in res_object.keys(),
-#         'status'   in res_object.keys(),
 
-#         'code'     in res_object['messages'][0].keys(),
-#         'text'     in res_object['messages'][0].keys(),
-#         'code'     in res_object['messages'][1].keys(),
-#         'text'     in res_object['messages'][1].keys(),
+def is_response_shape_ocrn(res_object):
+    return all([
+        'code'     in res_object.keys(),
+        'messages' in res_object.keys(),
+        'result'   in res_object.keys(),
+        'status'   in res_object.keys(),
 
-#         isinstance(res_object['result'],dict)
-#     ])
+        'code'     in res_object['messages'][0].keys(),
+        'text'     in res_object['messages'][0].keys(),
+        'code'     in res_object['messages'][1].keys(),
+        'text'     in res_object['messages'][1].keys(),
 
-
-# def is_response_shape_admin_success(res_object):
-#     return all([
-#         'code'     in res_object.keys(),
-#         'messages' in res_object.keys(),
-#         'result'   in res_object.keys(),
-#         'status'   in res_object.keys(),
-
-#         'code'     in res_object['messages'][0].keys(),
-#         'text'     in res_object['messages'][0].keys(),
-#         'code'     in res_object['messages'][1].keys(),
-#         'text'     in res_object['messages'][1].keys(),
-
-#         isinstance(res_object['result'],dict)
-#     ])
+        isinstance(res_object['result'],dict)
+    ])

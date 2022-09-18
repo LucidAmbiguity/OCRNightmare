@@ -25,11 +25,11 @@ def make_route_file(path,route_name):
     result = []
     if path == '':
         result.append(f'from app.routes.{route_name} import {route_name} # pylint: disable=import-self\n')
-        result.append(f'from ._format import _format\n\n')
+        result.append(f'from ._format import _my_format\n\n')
         result.append(f"@{route_name}.route('/', methods=['GET', 'POST'])\n")
         result.append(f"@{route_name}.route('', methods=['GET', 'POST'])\n")
         result.append(f'def {route_name}_root():\n')
-        result.append(f'   """Root route of {path} {route_name} Module"""\n')
+        result.append(f'    """Root route of {path} {route_name} Module"""\n')
         result.append(f'\n\n')
         result.append(f'    return _my_format({route_name.upper()}.ROOT,code=200)\n')
     else:
