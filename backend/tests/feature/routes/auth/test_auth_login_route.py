@@ -24,6 +24,7 @@ def test_auth_login_page_post_response_shape(test_client):
 
     response = test_client.post(Path)
 
+    print(response.json)
     assert  response.status_code == 401
     assert  is_response_shape_auth_error(response.json) is True
 

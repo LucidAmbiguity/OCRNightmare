@@ -1,7 +1,7 @@
 """ Authentication Route Controller """
 
 import uuid
-from typing import  Optional, TYPE_CHECKING
+from typing import  TYPE_CHECKING
 from flask import request, current_app
 
 
@@ -12,28 +12,14 @@ from app.types.my_types import NewUserTup
 from app.constants.AUTH import REGISTER,LOGIN
 from app.services.login_s import login_service
 
-from ._format import _format
+from ._my_format import _my_format
 
 if TYPE_CHECKING:
     from flask import Response
     # from app.types import
 
 
-def _my_format(api_code:tuple, result:Optional[dict] = None,x:str=None,code:int=401)->'Response':
 
-    if x is None:
-        return _format(
-            result, # type: ignore[misc]
-            code = code,
-            messages = [
-                api_code, # type: ignore[misc]
-                REGISTER.Realm],
-        )
-    return _format(
-            result, # type: ignore[misc]
-            code = code,
-            messages = [(api_code[0], api_code[1](x)),REGISTER.Realm], # type: ignore[misc]
-        )
 
 
 @auth.route('/', methods=['GET', 'POST']) #type: ignore[attr-defined, misc]

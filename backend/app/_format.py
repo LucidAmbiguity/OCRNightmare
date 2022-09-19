@@ -1,23 +1,29 @@
 """ Module return Format """
 
-from typing import Any, Optional, Union
+from typing import Any, Callable, Optional, Union
 from flask import  make_response,Response
+
+from app.constants.OCRN import OCRN
+from app.types.my_types import ApiResp
+
+
+
+
+
 
 
 def _format(
-        result:Union[dict[Any,Any],bool,None],
+        result:Union[dict[Any,Any],bool,None]=None,
         status:str='OK',
         code:int=200,
-        messages:Optional[list[tuple[str,str]]]=None,
+        messages:Optional[list[ApiResp]]=None,
+        headers:Optional[dict[str,str]]=None,
     )->Response:
 
     if result is None: # type: ignore[misc]
-        result = {'links': { # type: ignore[misc]
-        'login': 'login',
-        'register': 'register'
-    }}
+        result = {}
     if messages is None:
-        messages = [('','')]
+        messages = [ApiResp('','')]
 
     messages_ = []
     for message in messages:
@@ -35,8 +41,10 @@ def _format(
     resp = make_response(
         result_,
         code,
-        {'WWW.Authentication': 'Basic realm: "login required"'}, # type: ignore[misc]
+        headers, # type: ignore[misc]
     ) # type: ignore[misc]
-    # resp.set_cookie(
-    #     'token', value=token, max_age=60*30,secure=False, httponly=True)
     return resp
+
+# # If need to add cookies or some thing except response to var then
+# resp.set_cookie(
+#     'token', value=token, max_age=60*30,secure=False, httponly=True)

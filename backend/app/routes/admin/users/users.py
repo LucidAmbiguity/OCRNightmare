@@ -1,34 +1,17 @@
 """ ADMIN User Route Controller """
 
-from typing import Any, Optional, TYPE_CHECKING
+from typing import  TYPE_CHECKING
 from flask import abort
-from .._format import _format
-
+from .._my_format import _my_format
 from app.routes.admin.users import users # type: ignore[no-redef] # pylint: disable=import-self unused-import
 from app.repositories.users_repo import UsersRepo
 from app.repositories.user_repo import UserRepo
-from app.constants.AUTH import REGISTER
 from app.constants.ADMIN import ADMIN
 
 
 if TYPE_CHECKING:
     from flask import Response
 
-def _my_format(api_code:tuple[str,str], result:Optional[dict[Any,Any]] = None,x:str=None,code:int=401)->'Response':
-
-    if x is None:
-        return _format(
-            result, #type: ignore[misc]
-            code = code,
-            messages = [
-                (api_code[0], api_code[1]),
-                REGISTER.Missing],
-        )
-    return _format(
-            result, #type: ignore[misc]
-            code = code,
-            messages = [(api_code[0], api_code[1](x)),REGISTER.Realm],  #type: ignore[misc,operator]
-        )
 
 @users.route('', methods=['GET', 'POST']) #type: ignore[attr-defined, misc]
 def users_root()->'Response':

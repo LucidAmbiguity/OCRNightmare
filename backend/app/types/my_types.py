@@ -1,7 +1,7 @@
 """My custom Types"""
 
 from dataclasses import dataclass
-from typing import   NamedTuple, Optional, TypedDict
+from typing import   Callable, NamedTuple, Optional, TypedDict, Union
 # from typing import TYPE_CHECKING
 
 # if TYPE_CHECKING:
@@ -50,3 +50,7 @@ UserT = TypedDict(
         'name': str,
         'admin': bool,
     })
+
+class ApiResp(NamedTuple):
+    code: str
+    text: Union[str,Callable[[str],str]]

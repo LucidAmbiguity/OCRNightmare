@@ -1,5 +1,7 @@
+""" ocrnightmare route Controller """
+
 from app.routes.ocrnightmare import ocrnightmare # pylint: disable=import-self
-from ._format import _my_format
+from ._my_format import _my_format
 
 from app.constants.OCRN import OCRN
 
@@ -8,5 +10,8 @@ from app.constants.OCRN import OCRN
 def ocrnightmare_root():
     """Root route of  ocrnightmare Module"""
 
-
-    return _my_format(OCRN.ROOT,code=200)
+    result = {'data': {
+                    'ocrnightmare': 'ocrnightmare root',
+        }
+    }
+    return _my_format(OCRN.ROOT, code=200,result=result)

@@ -1,165 +1,102 @@
 ============================= test session starts =============================
-platform win32 -- Python 3.9.2, pytest-7.1.2, pluggy-1.0.0
+platform win32 -- Python 3.9.2, pytest-7.1.2, pluggy-1.0.0 -- C:\xampp\htdocs\python\OCRNightmare\backend\.venv\Scripts\python.exe
+cachedir: .pytest_cache
 rootdir: C:\xampp\htdocs\python\OCRNightmare\backend
 plugins: cov-3.0.0
-collected 33 items
+collecting ... collected 45 items
 
-tests\feature\routes\test_home_route.py .....                            [ 15%]
-tests\feature\routes\admin\test_admin_route.py ..                        [ 21%]
-tests\feature\routes\admin\test_admin_users_route.py ...                 [ 30%]
-tests\feature\routes\admin\test_admin_users_uid_route.py FFF             [ 39%]
-tests\feature\routes\auth\test_auth_login_route.py ......                [ 57%]
-tests\feature\routes\auth\test_auth_register_route.py .........          [ 84%]
-tests\feature\routes\auth\test_auth_route.py ....                        [ 96%]
-tests\unit\config_env\test_config.py .                                   [100%]
+tests/feature/routes/test_home_route.py::test_home_page_get PASSED
+tests/feature/routes/test_home_route.py::test_home_page_post_returns_status_error PASSED
+tests/feature/routes/test_home_route.py::test_home_page_post_returns_status_code_405 PASSED
+tests/feature/routes/test_home_route.py::test_home_page_post_returns_json PASSED
+tests/feature/routes/test_home_route.py::test_home_page_get_returns_json PASSED
+tests/feature/routes/admin/test_admin_route.py::test_admin_page_get PASSED
+tests/feature/routes/admin/test_admin_route.py::test_admin_response_shape PASSED
+tests/feature/routes/admin/test_admin_users_pub_id_delete.py::test_admin_users_pub_id_delete_page_get_returns_200 admin/_my_format
+True
+False
+<function ADMIN.<lambda> at 0x000002125B4B0310>
+PASSED
+tests/feature/routes/admin/test_admin_users_pub_id_delete.py::test_admin_users_pub_id_delete_response_shape admin/_my_format
+True
+False
+<function ADMIN.<lambda> at 0x000002125B4B0310>
+PASSED
+tests/feature/routes/admin/test_admin_users_pub_id_delete.py::test_admin_users_pub_id_delete_deletes_a_user admin/_my_format
+True
+False
+<function ADMIN.<lambda> at 0x000002125B4B0310>
+PASSED
+tests/feature/routes/admin/test_admin_users_pub_id_delete.py::test_admin_users_pub_id_delete_returns_404_when_pub_id_not_found PASSED
+tests/feature/routes/admin/test_admin_users_route.py::test_admin_users_page_get_returns_200 PASSED
+tests/feature/routes/admin/test_admin_users_route.py::test_admin_users_response_shape PASSED
+tests/feature/routes/admin/test_admin_users_route.py::test_admin_users_gets_list_of_users PASSED
+tests/feature/routes/admin/test_admin_users_uid_delete.py::test_admin_users_uid_delete_page_get_returns_200 admin/_my_format
+True
+False
+<function ADMIN.<lambda> at 0x000002125B4B0310>
+PASSED
+tests/feature/routes/admin/test_admin_users_uid_delete.py::test_admin_users_uid_delete_response_shape admin/_my_format
+True
+False
+<function ADMIN.<lambda> at 0x000002125B4B0310>
+PASSED
+tests/feature/routes/admin/test_admin_users_uid_delete.py::test_admin_users_uid_delete_deletes_a_user admin/_my_format
+True
+False
+<function ADMIN.<lambda> at 0x000002125B4B0310>
+PASSED
+tests/feature/routes/admin/test_admin_users_uid_delete.py::test_admin_users_uid_delete_returns_404_when_uid_not_found PASSED
+tests/feature/routes/admin/test_admin_users_uid_route.py::test_admin_users_uid_page_get_returns_200 PASSED
+tests/feature/routes/admin/test_admin_users_uid_route.py::test_admin_users_uid_response_shape PASSED
+tests/feature/routes/admin/test_admin_users_uid_route.py::test_admin_users_uid_gets_a_user PASSED
+tests/feature/routes/admin/test_admin_users_uid_route.py::test_admin_users_uid_returns_404_when_uid_not_found PASSED
+tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_page_GET_returns_405 PASSED
+tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_page_post_response_shape {'code': 401, 'messages': [{'code': 'AL0012', 'text': 'Username and Password Required'}, {'code': 'AR0003', 'text': "Basic realm: 'login required'"}], 'result': {'links': {'login': 'login', 'register': 'register'}}, 'status': 'OK'}
+PASSED
+tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_page_headers_contains_basic_auth_info_for_missing_auth_info PASSED
+tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_bad_username_fails login_service:  ('TEST1', 'bark') None None
+login_user:  None None
+admin/_my_format
+True
+False
+<function LOGIN.<lambda> at 0x000002125B3C2430>
+PASSED
+tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_bad_password_fails login_service:  ('TEST1', 'bark') mockpassword pub_id
+login_user:  None None
+admin/_my_format
+True
+False
+<function LOGIN.<lambda> at 0x000002125B3C2430>
+PASSED
+tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_good_creds_pass login_service:  ('TEST1', 'password') sha256$mk99GD7DMA92dS3c$c417f3e19b2aca9c41b5b31a4c7e9a5006d17c3d9807edc480e1c8c6424a6480 pub_id
+login_user:  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJwdWJfaWQiLCJleHAiOjE2NjM1NDY0OTR9.gu1p5NGBPc4O85z8JPhUroc9qEXypZZ7bHJTrhOUo9o pub_id
+{'code': 401, 'messages': [{'code': 'AL0020', 'text': 'Login Successful'}, {'code': 'AR0003', 'text': "Basic realm: 'login required'"}], 'result': {'login': 'Success', 'public_id': 'pub_id'}, 'status': 'OK'}
+PASSED
+tests/feature/routes/auth/test_auth_register_route.py::test_auth_register_page_GET_returns_405 PASSED
+tests/feature/routes/auth/test_auth_register_route.py::test_auth_register_page_GET_returns_json PASSED
+tests/feature/routes/auth/test_auth_register_route.py::test_auth_register_page_post_response_shape PASSED
+tests/feature/routes/auth/test_auth_register_route.py::test_auth_register_page_headers_contains_basic_auth_info_for_missing_auth_info PASSED
+tests/feature/routes/auth/test_auth_register_route.py::test_username_less_than_3_is_error admin/_my_format
+True
+False
+<function REGISTER.<lambda> at 0x000002125B3C2310>
+PASSED
+tests/feature/routes/auth/test_auth_register_route.py::test_existing_username_fails_to_register admin/_my_format
+True
+False
+<function REGISTER.<lambda> at 0x000002125B3C23A0>
+PASSED
+tests/feature/routes/auth/test_auth_register_route.py::test_short_password_fails_to_register PASSED
+tests/feature/routes/auth/test_auth_register_route.py::test_valid_creds_fail_in_db_creation_unknown_failure PASSED
+tests/feature/routes/auth/test_auth_register_route.py::test_valid_creds_do_register PASSED
+tests/feature/routes/auth/test_auth_route.py::test_auth_page_get PASSED
+tests/feature/routes/auth/test_auth_route.py::test_auth_page_get_returns_json PASSED
+tests/feature/routes/auth/test_auth_route.py::test_auth_page_get_response_shape PASSED
+tests/feature/routes/auth/test_auth_route.py::test_auth_page_get_response_value PASSED
+tests/feature/routes/ocrn/test_ocrn_route.py::test_ocrn_page_get PASSED
+tests/feature/routes/ocrn/test_ocrn_route.py::test_ocrn_response_shape PASSED
+tests/feature/routes/ocrn/test_ocrn_route.py::test_ocrn_response_messages PASSED
+tests/unit/config_env/test_config.py::test_config_class_exists_and_has_expected_attributes PASSED
 
-================================== FAILURES ===================================
-__________________ test_admin_users_uid_page_get_returns_200 __________________
-
-args = (), keywargs = {}
-
-    @wraps(func)
-    def patched(*args, **keywargs):
->       with self.decoration_helper(patched,
-                                    args,
-                                    keywargs) as (newargs, newkeywargs):
-
-C:\Program Files\Python39\lib\unittest\mock.py:1334: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-C:\Program Files\Python39\lib\contextlib.py:117: in __enter__
-    return next(self.gen)
-C:\Program Files\Python39\lib\unittest\mock.py:1316: in decoration_helper
-    arg = exit_stack.enter_context(patching)
-C:\Program Files\Python39\lib\contextlib.py:429: in enter_context
-    result = _cm_type.__enter__(cm)
-C:\Program Files\Python39\lib\unittest\mock.py:1405: in __enter__
-    original, local = self.get_original()
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-
-self = <unittest.mock._patch object at 0x00000236A6DA01F0>
-
-    def get_original(self):
-        target = self.getter()
-        name = self.attribute
-    
-        original = DEFAULT
-        local = False
-    
-        try:
-            original = target.__dict__[name]
-        except (AttributeError, KeyError):
-            original = getattr(target, name, DEFAULT)
-        else:
-            local = True
-    
-        if name in _builtins and isinstance(target, ModuleType):
-            self.create = True
-    
-        if not self.create and original is DEFAULT:
->           raise AttributeError(
-                "%s does not have the attribute %r" % (target, name)
-            )
-E           AttributeError: <class 'app.interfaces.db_user_if.DBUserI'> does not have the attribute 'get_user'
-
-C:\Program Files\Python39\lib\unittest\mock.py:1378: AttributeError
-_____________________ test_admin_users_uid_response_shape _____________________
-
-args = (), keywargs = {}
-
-    @wraps(func)
-    def patched(*args, **keywargs):
->       with self.decoration_helper(patched,
-                                    args,
-                                    keywargs) as (newargs, newkeywargs):
-
-C:\Program Files\Python39\lib\unittest\mock.py:1334: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-C:\Program Files\Python39\lib\contextlib.py:117: in __enter__
-    return next(self.gen)
-C:\Program Files\Python39\lib\unittest\mock.py:1316: in decoration_helper
-    arg = exit_stack.enter_context(patching)
-C:\Program Files\Python39\lib\contextlib.py:429: in enter_context
-    result = _cm_type.__enter__(cm)
-C:\Program Files\Python39\lib\unittest\mock.py:1405: in __enter__
-    original, local = self.get_original()
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-
-self = <unittest.mock._patch object at 0x00000236A6DA00D0>
-
-    def get_original(self):
-        target = self.getter()
-        name = self.attribute
-    
-        original = DEFAULT
-        local = False
-    
-        try:
-            original = target.__dict__[name]
-        except (AttributeError, KeyError):
-            original = getattr(target, name, DEFAULT)
-        else:
-            local = True
-    
-        if name in _builtins and isinstance(target, ModuleType):
-            self.create = True
-    
-        if not self.create and original is DEFAULT:
->           raise AttributeError(
-                "%s does not have the attribute %r" % (target, name)
-            )
-E           AttributeError: <class 'app.interfaces.db_user_if.DBUserI'> does not have the attribute 'get_user'
-
-C:\Program Files\Python39\lib\unittest\mock.py:1378: AttributeError
-___________________ test_admin_users_uid_gets_list_of_users ___________________
-
-args = (), keywargs = {}
-
-    @wraps(func)
-    def patched(*args, **keywargs):
->       with self.decoration_helper(patched,
-                                    args,
-                                    keywargs) as (newargs, newkeywargs):
-
-C:\Program Files\Python39\lib\unittest\mock.py:1334: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-C:\Program Files\Python39\lib\contextlib.py:117: in __enter__
-    return next(self.gen)
-C:\Program Files\Python39\lib\unittest\mock.py:1316: in decoration_helper
-    arg = exit_stack.enter_context(patching)
-C:\Program Files\Python39\lib\contextlib.py:429: in enter_context
-    result = _cm_type.__enter__(cm)
-C:\Program Files\Python39\lib\unittest\mock.py:1405: in __enter__
-    original, local = self.get_original()
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-
-self = <unittest.mock._patch object at 0x00000236A6DA09A0>
-
-    def get_original(self):
-        target = self.getter()
-        name = self.attribute
-    
-        original = DEFAULT
-        local = False
-    
-        try:
-            original = target.__dict__[name]
-        except (AttributeError, KeyError):
-            original = getattr(target, name, DEFAULT)
-        else:
-            local = True
-    
-        if name in _builtins and isinstance(target, ModuleType):
-            self.create = True
-    
-        if not self.create and original is DEFAULT:
->           raise AttributeError(
-                "%s does not have the attribute %r" % (target, name)
-            )
-E           AttributeError: <class 'app.interfaces.db_user_if.DBUserI'> does not have the attribute 'get_user'
-
-C:\Program Files\Python39\lib\unittest\mock.py:1378: AttributeError
-=========================== short test summary info ===========================
-FAILED tests/feature/routes/admin/test_admin_users_uid_route.py::test_admin_users_uid_page_get_returns_200
-FAILED tests/feature/routes/admin/test_admin_users_uid_route.py::test_admin_users_uid_response_shape
-FAILED tests/feature/routes/admin/test_admin_users_uid_route.py::test_admin_users_uid_gets_list_of_users
-======================== 3 failed, 30 passed in 1.98s =========================
+============================= 45 passed in 2.63s ==============================
