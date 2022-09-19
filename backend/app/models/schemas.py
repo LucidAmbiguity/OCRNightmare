@@ -20,3 +20,14 @@ class UserSchema(ma.Schema):
 
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
+
+
+class ProjectSchema(ma.Schema):
+
+    class Meta:
+        fields = ('id', 'name', 'filename',
+                  'status',
+                  )
+
+project_schema = ProjectSchema()
+projects_schema = ProjectSchema(many=True)

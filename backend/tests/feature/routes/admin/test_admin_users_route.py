@@ -12,6 +12,7 @@ from tests.helpers import (
 Path = '/admin/users'
 user_mock1 = MockUserAlso(1,'pub_id1','name1',False)
 user_mock2 = MockUserAlso(2,'pub_id2','name2',False)
+
 @patch('app.interfaces.db_user_if.DBUserI.get_all_users', return_value = [user_mock1,user_mock2])
 def test_admin_users_page_get_returns_200(a, test_client):
     response = test_client.get(Path)

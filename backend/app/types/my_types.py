@@ -56,4 +56,11 @@ class ApiResp(NamedTuple):
     text: Union[str,Callable[[str],str]]
 
 
+class ProjDataT(NamedTuple):
+    id:int
+    name: str
+    status: int
+    filename:str
+    # 'pages': int
+    # 'customers': int
 

@@ -41,5 +41,27 @@ class User(db.Model): # type: ignore[name-defined]
                 kwargs['password'], method='sha256') # type: ignore[misc]
         # do custom initialization here
 
+class Project(db.Model): # type: ignore[name-defined]
+    """
+    Project Model
+        id: int
+        name: str
+        filename: str
+        status: int
+        pages: list[Page] - Relation
+        customers: list[Customer] - Relation
+        tags: list[Tag] - Relation
+    """
+
+    # pylint: disable=no-member
+    id: int = db.Column(db.Integer, primary_key=True) # type: ignore[misc]
+    name: str = db.Column(db.String(25), index=True, unique=True) # type: ignore[misc]
+    filename: str = db.Column(db.String(25), index=True, unique=True) # type: ignore[misc]
+    status: int = db.Column(db.Integer,  nullable=False) # type: ignore[misc]
+    # pages: 'Page' = db.relationship('Page', backref='project', lazy='dynamic')
+    # customers: 'Customer' = db.relationship('Customer', backref='project', lazy='dynamic')  # pylint: disable=line-too-long
+    # tags: 'Tag' = db.relationship('Tag', backref='project', lazy='dynamic')
+
+    # pylint: enable=no-member
 
 

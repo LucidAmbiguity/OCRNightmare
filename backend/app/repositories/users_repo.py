@@ -22,6 +22,15 @@ class UsersRepo:
 
     _user_db: Optional['User'] = None
 
+
+    def __init__(
+            self,
+            db_u_i:Type[DBUserI]=DBUserI,
+            ) ->None:
+
+        self._db_u_i = db_u_i()
+
+
     def _return_logic(self,user_db:Optional['User'])->Optional['UserT']:
         if user_db is None:
             return None
@@ -31,30 +40,6 @@ class UsersRepo:
     def _has_user(self)->None:
         if self._user_db is not None:
             self.has_user = True
-
-    def __init__(
-            self,
-            username:str=None,
-            uid:int=None,
-            public_id:str=None,
-            db_u_i:Type[DBUserI]=DBUserI,
-            ) ->None:
-
-        self._db_u_i = db_u_i()
-        self._username = username
-        self._id = uid
-        self._public_id = public_id
-
-        self.has_user = False
-        if username:
-            self._user_db = self._db_u_i.get_user_by_username(self._username)
-            self._has_user()
-        if uid:
-            self._user_db = self._db_u_i.get_user_by_id(self._id)
-            self._has_user()
-        if public_id:
-            self._user_db = self._db_u_i.get_user_by_public_id(self._public_id)
-            self._has_user()
 
     def get_user_by_username(self)->Optional['UserT']:
         user_db = self._db_u_i.get_user_by_username(self._username)
