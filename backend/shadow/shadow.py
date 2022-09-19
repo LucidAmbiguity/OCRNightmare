@@ -11,11 +11,15 @@ def make_route_init_file(path,route_name):
     result = []
     if path == '':
         result.append(f'""" {route_name} BluePrint Module """\n')
+        result.append(f'\n')
+        result.append(f'\n')
         result.append(f'from flask import Blueprint\n')
         result.append(f'{route_name} = Blueprint("{route_name}", __name__,)\n')
         result.append(f'from .{route_name} import {route_name} # pylint: disable=wrong-import-position\n')
     else:
         result.append(f'""" {path} {route_name} BluePrint Module """\n')
+        result.append(f'\n')
+        result.append(f'\n')
         result.append(f'from flask import Blueprint\n')
         result.append(f'{route_name} = Blueprint("{route_name}", __name__,)\n')
         result.append(f'from .{route_name} import {route_name} # pylint: disable=wrong-import-position\n')
@@ -26,10 +30,10 @@ def make_route_file(path,route_name):
     if path == '':
 
         result.append(f'""" {route_name} route Controller """')
-        result.append(f'')
-        result.append(f'')
+        result.append(f'\n\n')
+        result.append(f'\n')
         result.append(f'from app.routes.{route_name} import {route_name} # pylint: disable=import-self\n')
-        result.append(f'from ._format import _my_format\n\n')
+        result.append(f'from ._my_format import _my_format\n\n')
         result.append(f"@{route_name}.route('/', methods=['GET', 'POST'])\n")
         result.append(f"@{route_name}.route('', methods=['GET', 'POST'])\n")
         result.append(f'def {route_name}_root():\n')
@@ -38,10 +42,10 @@ def make_route_file(path,route_name):
         result.append(f'    return _my_format({route_name.upper()}.ROOT,code=200)\n')
     else:
         result.append(f'""" {path} {route_name} route Controller """')
-        result.append(f'')
-        result.append(f'')
+        result.append(f'\n\n')
+        result.append(f'\n')
         result.append(f'from app.routes.{path}.{route_name} import {route_name} # pylint: disable=import-self\n')
-        result.append(f'from .._format import _format\n\n')
+        result.append(f'from .._my_format import _my_format\n\n')
         result.append(f"@{route_name}.route('/', methods=['GET', 'POST'])\n")
         result.append(f"@{route_name}.route('', methods=['GET', 'POST'])\n")
         result.append(f'def {route_name}_root():\n')
