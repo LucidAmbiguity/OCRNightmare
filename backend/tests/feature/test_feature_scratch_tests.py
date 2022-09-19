@@ -1,7 +1,10 @@
 # """test scratch pad
 #     a place for uncategorized feature  tests
-#     Will likely be moved in refactor phase 
+#     Will likely be moved in refactor phase
 # """
+# pylint: disable=invalid-name unused-argument
+
+
 
 # # def test_():
 # #   assert True
@@ -26,7 +29,7 @@
 #         # Establish an application context
 #         with created_app.app_context():
 #             response = testing_client.get('/')
-#             print(response.json)
+#             #print(response.json)
 #             assert response.status_code == 200
 #             assert b"Microblog" not in response.data
 #             assert b"Index Page" in response.data

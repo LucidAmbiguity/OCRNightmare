@@ -1,5 +1,6 @@
 """Test the default home route '/'"""
 
+# pylint: disable=invalid-name unused-argument
 
 def test_home_page_get(test_client):
     """
@@ -58,4 +59,3 @@ def test_home_page_get_returns_json(test_client):
 
     response = test_client.get('/')
     assert response.json is not None
-            

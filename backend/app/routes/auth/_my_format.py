@@ -25,10 +25,6 @@ def _my_format(api_code:ApiResp, result:Optional[dict] = None,x:str=None,code:in
             ],
             headers = {'WWW.Authentication': 'Basic realm: "login required"'},
         )
-    print('admin/_my_format')
-    print(not isinstance(api_code.text,str))
-    print(isinstance(api_code.text,str))
-    print(api_code.text)
     if not isinstance(api_code.text,str):
         return _format(
                 result = result, # type: ignore[misc]

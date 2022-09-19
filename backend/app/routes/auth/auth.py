@@ -82,7 +82,7 @@ def login_user()->'Response':
         req_tup,
         current_app,
     )
-    print('login_user: ',access_token,pub_id)
+    # #print('login_user: ',access_token,pub_id)
     if access_token is None:
         return _my_format(LOGIN.Failed_,x=request_auth.username)
 

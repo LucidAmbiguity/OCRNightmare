@@ -24,7 +24,6 @@ def test_auth_login_page_post_response_shape(test_client):
 
     response = test_client.post(Path)
 
-    print(response.json)
     assert  response.status_code == 401
     assert  is_response_shape_auth_error(response.json) is True
 
@@ -103,7 +102,7 @@ def test_auth_login_good_creds_pass(a,test_client):
 
     assert response.json['messages'][0]['code'] == 'AL0020'
     assert response.json['messages'][0]['text'] == 'Login Successful'
-    print(response.json)
+
     assert response.json['result']['login'] == 'Success'
     assert response.json['result']['public_id'] == 'pub_id'
     cookie = next(

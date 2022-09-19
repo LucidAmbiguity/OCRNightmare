@@ -17,7 +17,7 @@ def login_service(userpass:tuple[str,str],current_app:'Flask')->Union[tuple[str,
     user = userpass[0]
     offered_password = userpass[1]
     (current_password, pub_id) = UserRepo(username=user).get_user_password_and_pubid()
-    print('login_service: ',userpass,current_password,pub_id)
+    # #print('login_service: ',userpass,current_password,pub_id)
     if current_password is None:
         return None,None
 

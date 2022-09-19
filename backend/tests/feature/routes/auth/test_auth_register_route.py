@@ -79,9 +79,9 @@ def test_username_less_than_3_is_error(test_client):
 def test_existing_username_fails_to_register(my_mock,test_client,user1_creds):
 
     response = test_client.post(Path, headers={'Authorization': f'Basic {user1_creds[0]}'})
-    # print('test_existing_username_fails_to_register',response.json)
-    # print(user1_creds)
+
     assert is_response_shape_auth_error(response.json) is True
+
     assert response.json['messages'][0]['code'] == 'AR0005'
     assert response.json['messages'][0]['text'] == f'{user1_creds[1]} Is in use'
 
@@ -99,8 +99,7 @@ def test_short_password_fails_to_register(my_mock,test_client):
     credentials = b64encode(my_creds_).decode('utf-8')
 
     response = test_client.post(Path, headers={'Authorization': f'Basic {credentials}'})
-    # print('test_existing_username_fails_to_register',response.json)
-    # print(user1_creds)
+
     assert is_response_shape_auth_error(response.json) is True
     assert response.json['messages'][0]['code'] == 'AR0006'
     assert response.json['messages'][0]['text'] == 'Password  is to short. At Least 8 characters please'

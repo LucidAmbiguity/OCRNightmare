@@ -1,5 +1,6 @@
 """Test the default auth route '/auth'"""
 
+# pylint: disable=invalid-name unused-argument
 
 def test_auth_page_get(test_client):
     """
@@ -35,13 +36,13 @@ def test_auth_page_get_response_shape(test_client):
     """
 
     response = test_client.get('/auth')
-    
+
 
     assert 'code' in response.json.keys()
     assert 'messages' in response.json.keys()
     assert 'result' in response.json.keys()
     assert 'status' in response.json.keys()
-    
+
     assert 'code' in response.json['messages'][0].keys()
     assert 'text' in response.json['messages'][0].keys()
 
@@ -60,7 +61,7 @@ def test_auth_page_get_response_value(test_client):
     """
 
     response = test_client.get('/auth')
-    
+
     assert response.json['code'] is 200
     assert response.json['status'] == "OK"
     assert response.json['messages'][0]['code'] == 'A00001'

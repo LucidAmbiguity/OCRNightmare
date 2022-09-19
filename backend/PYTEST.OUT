@@ -3,7 +3,7 @@ platform win32 -- Python 3.9.2, pytest-7.1.2, pluggy-1.0.0 -- C:\xampp\htdocs\py
 cachedir: .pytest_cache
 rootdir: C:\xampp\htdocs\python\OCRNightmare\backend
 plugins: cov-3.0.0
-collecting ... collected 45 items
+collecting ... collected 48 items
 
 tests/feature/routes/test_home_route.py::test_home_page_get PASSED
 tests/feature/routes/test_home_route.py::test_home_page_post_returns_status_error PASSED
@@ -12,81 +12,33 @@ tests/feature/routes/test_home_route.py::test_home_page_post_returns_json PASSED
 tests/feature/routes/test_home_route.py::test_home_page_get_returns_json PASSED
 tests/feature/routes/admin/test_admin_route.py::test_admin_page_get PASSED
 tests/feature/routes/admin/test_admin_route.py::test_admin_response_shape PASSED
-tests/feature/routes/admin/test_admin_users_pub_id_delete.py::test_admin_users_pub_id_delete_page_get_returns_200 admin/_my_format
-True
-False
-<function ADMIN.<lambda> at 0x000002125B4B0310>
-PASSED
-tests/feature/routes/admin/test_admin_users_pub_id_delete.py::test_admin_users_pub_id_delete_response_shape admin/_my_format
-True
-False
-<function ADMIN.<lambda> at 0x000002125B4B0310>
-PASSED
-tests/feature/routes/admin/test_admin_users_pub_id_delete.py::test_admin_users_pub_id_delete_deletes_a_user admin/_my_format
-True
-False
-<function ADMIN.<lambda> at 0x000002125B4B0310>
-PASSED
+tests/feature/routes/admin/test_admin_users_pub_id_delete.py::test_admin_users_pub_id_delete_page_get_returns_200 PASSED
+tests/feature/routes/admin/test_admin_users_pub_id_delete.py::test_admin_users_pub_id_delete_response_shape PASSED
+tests/feature/routes/admin/test_admin_users_pub_id_delete.py::test_admin_users_pub_id_delete_deletes_a_user PASSED
 tests/feature/routes/admin/test_admin_users_pub_id_delete.py::test_admin_users_pub_id_delete_returns_404_when_pub_id_not_found PASSED
 tests/feature/routes/admin/test_admin_users_route.py::test_admin_users_page_get_returns_200 PASSED
 tests/feature/routes/admin/test_admin_users_route.py::test_admin_users_response_shape PASSED
 tests/feature/routes/admin/test_admin_users_route.py::test_admin_users_gets_list_of_users PASSED
-tests/feature/routes/admin/test_admin_users_uid_delete.py::test_admin_users_uid_delete_page_get_returns_200 admin/_my_format
-True
-False
-<function ADMIN.<lambda> at 0x000002125B4B0310>
-PASSED
-tests/feature/routes/admin/test_admin_users_uid_delete.py::test_admin_users_uid_delete_response_shape admin/_my_format
-True
-False
-<function ADMIN.<lambda> at 0x000002125B4B0310>
-PASSED
-tests/feature/routes/admin/test_admin_users_uid_delete.py::test_admin_users_uid_delete_deletes_a_user admin/_my_format
-True
-False
-<function ADMIN.<lambda> at 0x000002125B4B0310>
-PASSED
+tests/feature/routes/admin/test_admin_users_uid_delete.py::test_admin_users_uid_delete_page_get_returns_200 PASSED
+tests/feature/routes/admin/test_admin_users_uid_delete.py::test_admin_users_uid_delete_response_shape PASSED
+tests/feature/routes/admin/test_admin_users_uid_delete.py::test_admin_users_uid_delete_deletes_a_user PASSED
 tests/feature/routes/admin/test_admin_users_uid_delete.py::test_admin_users_uid_delete_returns_404_when_uid_not_found PASSED
 tests/feature/routes/admin/test_admin_users_uid_route.py::test_admin_users_uid_page_get_returns_200 PASSED
 tests/feature/routes/admin/test_admin_users_uid_route.py::test_admin_users_uid_response_shape PASSED
 tests/feature/routes/admin/test_admin_users_uid_route.py::test_admin_users_uid_gets_a_user PASSED
 tests/feature/routes/admin/test_admin_users_uid_route.py::test_admin_users_uid_returns_404_when_uid_not_found PASSED
 tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_page_GET_returns_405 PASSED
-tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_page_post_response_shape {'code': 401, 'messages': [{'code': 'AL0012', 'text': 'Username and Password Required'}, {'code': 'AR0003', 'text': "Basic realm: 'login required'"}], 'result': {'links': {'login': 'login', 'register': 'register'}}, 'status': 'OK'}
-PASSED
+tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_page_post_response_shape PASSED
 tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_page_headers_contains_basic_auth_info_for_missing_auth_info PASSED
-tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_bad_username_fails login_service:  ('TEST1', 'bark') None None
-login_user:  None None
-admin/_my_format
-True
-False
-<function LOGIN.<lambda> at 0x000002125B3C2430>
-PASSED
-tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_bad_password_fails login_service:  ('TEST1', 'bark') mockpassword pub_id
-login_user:  None None
-admin/_my_format
-True
-False
-<function LOGIN.<lambda> at 0x000002125B3C2430>
-PASSED
-tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_good_creds_pass login_service:  ('TEST1', 'password') sha256$mk99GD7DMA92dS3c$c417f3e19b2aca9c41b5b31a4c7e9a5006d17c3d9807edc480e1c8c6424a6480 pub_id
-login_user:  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJwdWJfaWQiLCJleHAiOjE2NjM1NDY0OTR9.gu1p5NGBPc4O85z8JPhUroc9qEXypZZ7bHJTrhOUo9o pub_id
-{'code': 401, 'messages': [{'code': 'AL0020', 'text': 'Login Successful'}, {'code': 'AR0003', 'text': "Basic realm: 'login required'"}], 'result': {'login': 'Success', 'public_id': 'pub_id'}, 'status': 'OK'}
-PASSED
+tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_bad_username_fails PASSED
+tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_bad_password_fails PASSED
+tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_good_creds_pass PASSED
 tests/feature/routes/auth/test_auth_register_route.py::test_auth_register_page_GET_returns_405 PASSED
 tests/feature/routes/auth/test_auth_register_route.py::test_auth_register_page_GET_returns_json PASSED
 tests/feature/routes/auth/test_auth_register_route.py::test_auth_register_page_post_response_shape PASSED
 tests/feature/routes/auth/test_auth_register_route.py::test_auth_register_page_headers_contains_basic_auth_info_for_missing_auth_info PASSED
-tests/feature/routes/auth/test_auth_register_route.py::test_username_less_than_3_is_error admin/_my_format
-True
-False
-<function REGISTER.<lambda> at 0x000002125B3C2310>
-PASSED
-tests/feature/routes/auth/test_auth_register_route.py::test_existing_username_fails_to_register admin/_my_format
-True
-False
-<function REGISTER.<lambda> at 0x000002125B3C23A0>
-PASSED
+tests/feature/routes/auth/test_auth_register_route.py::test_username_less_than_3_is_error PASSED
+tests/feature/routes/auth/test_auth_register_route.py::test_existing_username_fails_to_register PASSED
 tests/feature/routes/auth/test_auth_register_route.py::test_short_password_fails_to_register PASSED
 tests/feature/routes/auth/test_auth_register_route.py::test_valid_creds_fail_in_db_creation_unknown_failure PASSED
 tests/feature/routes/auth/test_auth_register_route.py::test_valid_creds_do_register PASSED
@@ -94,9 +46,12 @@ tests/feature/routes/auth/test_auth_route.py::test_auth_page_get PASSED
 tests/feature/routes/auth/test_auth_route.py::test_auth_page_get_returns_json PASSED
 tests/feature/routes/auth/test_auth_route.py::test_auth_page_get_response_shape PASSED
 tests/feature/routes/auth/test_auth_route.py::test_auth_page_get_response_value PASSED
+tests/feature/routes/ocrn/test_ocrn_projects_route.py::test_ocrn_project_page_get PASSED
+tests/feature/routes/ocrn/test_ocrn_projects_route.py::test_ocrn_projects_project_page_get PASSED
 tests/feature/routes/ocrn/test_ocrn_route.py::test_ocrn_page_get PASSED
 tests/feature/routes/ocrn/test_ocrn_route.py::test_ocrn_response_shape PASSED
 tests/feature/routes/ocrn/test_ocrn_route.py::test_ocrn_response_messages PASSED
+tests/feature/routes/ocrn/test_ocrn_route.py::test_ocrn_response_result_data PASSED
 tests/unit/config_env/test_config.py::test_config_class_exists_and_has_expected_attributes PASSED
 
-============================= 45 passed in 2.63s ==============================
+============================= 48 passed in 1.91s ==============================

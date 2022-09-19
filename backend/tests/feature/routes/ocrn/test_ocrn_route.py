@@ -1,4 +1,7 @@
 """Test App projects '/ocrnightmare/projects' """
+
+# pylint: disable=invalid-name unused-argument
+
 from app.constants.OCRN import OCRN
 
 from tests.helpers import (
