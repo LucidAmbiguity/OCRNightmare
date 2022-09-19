@@ -54,3 +54,6 @@ UserT = TypedDict(
 class ApiResp(NamedTuple):
     code: str
     text: Union[str,Callable[[str],str]]
+
+
+

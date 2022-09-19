@@ -1,15 +1,10 @@
 """ Module return Format """
 
-from typing import Any, Callable, Optional, Union
+
+from typing import Any, Optional, Union
 from flask import  make_response,Response
 
-from app.constants.OCRN import OCRN
 from app.types.my_types import ApiResp
-
-
-
-
-
 
 
 def _format(

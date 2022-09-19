@@ -1,18 +1,23 @@
 """ ocrnightmare route Controller """
 
-from app.routes.ocrnightmare import ocrnightmare # pylint: disable=import-self
+
+from typing import TYPE_CHECKING
+from app.routes.ocrnightmare import ocrnightmare # type: ignore[no-redef] # pylint: disable=import-self
 from ._my_format import _my_format
 
 from .projects import projects_bp
 
 from app.constants.OCRN import OCRN
 
+if TYPE_CHECKING:
+    from flask import Response
 
-ocrnightmare.register_blueprint(projects_bp,        url_prefix='/projects')
 
-@ocrnightmare.route('/', methods=['GET', 'POST'])
-@ocrnightmare.route('', methods=['GET', 'POST'])
-def ocrnightmare_root():
+ocrnightmare.register_blueprint(projects_bp,        url_prefix='/projects')  # type: ignore[ attr-defined]
+
+@ocrnightmare.route('/', methods=['GET', 'POST']) # type: ignore[misc, attr-defined]
+@ocrnightmare.route('', methods=['GET', 'POST']) # type: ignore[misc, attr-defined]
+def ocrnightmare_root()->'Response':
     """Root route of  ocrnightmare Module"""
 
     result = {'data': {

@@ -1,11 +1,13 @@
 """ Module return Format """
 
-from typing import Optional
-from flask import  Response
+from typing import Optional, TYPE_CHECKING
 
 from app.constants.ADMIN import ADMIN
 from app.types.my_types import ApiResp
 from app._format import _format
+
+if TYPE_CHECKING:
+    from flask import  Response
 
 def _my_format(api_code:ApiResp, result:Optional[dict] = None,x:str=None,code:int=200)->'Response':
 

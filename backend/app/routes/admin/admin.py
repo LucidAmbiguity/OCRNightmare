@@ -6,7 +6,6 @@ from ._my_format import _my_format
 
 from app.routes.admin import admin  # type: ignore[no-redef] # pylint: disable=import-self
 
-from app.constants.AUTH import REGISTER
 from app.constants.ADMIN import ADMIN
 
 from .users import users

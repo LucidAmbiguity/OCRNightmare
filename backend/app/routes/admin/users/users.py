@@ -34,7 +34,7 @@ def users_test(uid:int)->'Response':
     return _my_format(ADMIN.User,code=200,result=result)
 
 @users.route('/<int:uid>', methods=['DELETE']) # type: ignore[attr-defined,misc]
-def delete_user(uid:int)->dict:
+def delete_user(uid:int)->'Response':
 
     success =  UserRepo(uid=uid).del_user()
 
@@ -44,7 +44,7 @@ def delete_user(uid:int)->dict:
 
 
 @users.route('/<pub_id>', methods=['DELETE']) # type: ignore[attr-defined,misc]
-def delete_user_by_pub_id(pub_id:str)->dict:
+def delete_user_by_pub_id(pub_id:str)->'Response':
 
     success =  UserRepo(public_id=pub_id).del_user()
     if not success:

@@ -1,15 +1,18 @@
 """ Module return Format """
 
-from typing import Optional
-from flask import  Response
+from typing import Optional, TYPE_CHECKING
+
 
 from app.constants.AUTH import REGISTER
 from app.types.my_types import ApiResp
 from app._format import _format
 
+if TYPE_CHECKING:
+    from flask import  Response
+
 def _my_format(api_code:ApiResp, result:Optional[dict] = None,x:str=None,code:int=401)->'Response':
 
-    if result is None:
+    if result is None: # type: ignore[misc]
         result = {'links': { # type: ignore[misc]
             'login': 'login',
             'register': 'register'
