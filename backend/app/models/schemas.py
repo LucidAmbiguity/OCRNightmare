@@ -31,3 +31,22 @@ class ProjectSchema(ma.Schema):
 
 project_schema = ProjectSchema()
 projects_schema = ProjectSchema(many=True)
+
+
+class PageSchema(ma.Schema):
+
+    class Meta:
+        fields = ('id', 'project_id',)
+
+page_schema = PageSchema()
+pages_schema = PageSchema(many=True)
+
+
+class CustomerSchema(ma.Schema):
+
+    class Meta:
+        fields = ('id', 'project_id',)
+
+customer_schema = CustomerSchema()
+customers_schema = CustomerSchema(many=True)
+

@@ -58,10 +58,26 @@ class Project(db.Model): # type: ignore[name-defined]
     name: str = db.Column(db.String(25), index=True, unique=True) # type: ignore[misc]
     filename: str = db.Column(db.String(25), index=True, unique=True) # type: ignore[misc]
     status: int = db.Column(db.Integer,  nullable=False) # type: ignore[misc]
-    # pages: 'Page' = db.relationship('Page', backref='project', lazy='dynamic')
-    # customers: 'Customer' = db.relationship('Customer', backref='project', lazy='dynamic')  # pylint: disable=line-too-long
+    pages: 'Page' = db.relationship('Page', backref='project', lazy='dynamic')
+    customers: 'Customer' = db.relationship('Customer', backref='project', lazy='dynamic')  # pylint: disable=line-too-long
+
+    #pylint: enable=no-member
+
+    #  # This will likely be attached to a strategy as the next sample data has 3 sections
+    #  #  of account/customer data to extract.
     # tags: 'Tag' = db.relationship('Tag', backref='project', lazy='dynamic')
 
-    # pylint: enable=no-member
+
+class Page(db.Model):
+    id: int = db.Column(db.Integer, primary_key=True) # type: ignore[misc]
+    project_id: int = db.Column(db.Integer, db.ForeignKey('project.id')) # type: ignore[misc]
+
+
+class Customer(db.Model):
+    id: int = db.Column(db.Integer, primary_key=True) # type: ignore[misc]
+    project_id: int = db.Column(db.Integer, db.ForeignKey('project.id')) # type: ignore[misc]
+
+
+
 
 

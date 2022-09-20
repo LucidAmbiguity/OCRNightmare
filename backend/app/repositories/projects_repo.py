@@ -28,12 +28,12 @@ class ProjectsRepo:
         projects_all = self._db_proj_i.get_all()
 
         project_list = [ProjDataT(
-             project.id,
-             project.name,
-             project.status,
-             project.filename,
-            #  project.pages.count(),
-            #  project.customers.count(),
+             id=project.id,
+             name=project.name,
+             status=project.status,
+             filename=project.filename,
+             pages=project.pages.count(),
+             customers=project.customers.count(),
         )
             for project in projects_all
         ]

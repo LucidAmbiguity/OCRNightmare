@@ -16,5 +16,5 @@ def show()->'Response':
     """Root route of ocrnightmare projects Module"""
     project_list = ProjectsRepo().get_all_projects()
 
-    result = {'data': project_list}
+    result = {'projects': project_list}
     return _my_format(OCRN.Projects, result=result ,code=200  )

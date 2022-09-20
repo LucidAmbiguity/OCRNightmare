@@ -25,12 +25,20 @@ class DBUserI:
 
 
     def new_user(self,new_user:NewUserTup)->User:
-        new_user_db = User(
+
+        if new_user.public_id is None and new_user.admin is None:
+            new_user_db = User(
+                name = new_user.name,
+                password = new_user.password,
+        )
+        else:
+            new_user_db = User(
                 public_id = new_user.public_id,
                 name = new_user.name,
                 password = new_user.password,
                 admin = new_user.admin,
         )
+
         db.session.add(new_user_db) # type: ignore[misc] # pylint: disable=no-member
         db.session.commit() # type: ignore[misc] # pylint: disable=no-member
         db.session.refresh(new_user_db) # type: ignore[misc]

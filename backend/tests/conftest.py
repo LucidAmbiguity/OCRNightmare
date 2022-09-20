@@ -6,7 +6,8 @@ from app.interfaces.db_interface import DBInterface
 
 # pylint: disable=unused-import
 from tests.mocked_models import (
-    new_user1,
+    # new_user1,
+    # new_user2,
     user1_creds,
     # new_user2,
 )

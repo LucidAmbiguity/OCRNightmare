@@ -37,13 +37,6 @@ class UsersRepo:
         user_: 'UserT' = user_schema.dump(user_db)
         return user_
 
-    def _has_user(self)->None:
-        if self._user_db is not None:
-            self.has_user = True
-
-    def get_user_by_username(self)->Optional['UserT']:
-        user_db = self._db_u_i.get_user_by_username(self._username)
-        return self._return_logic(user_db)
 
     def new_user(self,new_user_t:'NewUserTup')->Optional['UserT']:
         user_db = self._db_u_i.new_user(new_user_t)

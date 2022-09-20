@@ -3,6 +3,8 @@
 from .models import (
     Project,
     User,
+    Page,
+    Customer,
 
 )
 
@@ -11,5 +13,9 @@ from .schemas import (
     user_schema,
     users_schema,
     project_schema,
-    projects_schema
+    projects_schema,
+    page_schema,
+    pages_schema,
+    customer_schema,
+    customers_schema,
 )
