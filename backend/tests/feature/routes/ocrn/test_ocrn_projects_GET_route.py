@@ -1,4 +1,4 @@
-"""Test App projects '/ocrnightmare/projects' """
+"""Test App projects GET '/ocrnightmare/projects' """
 
 
 # pylint: disable=invalid-name unused-argument
