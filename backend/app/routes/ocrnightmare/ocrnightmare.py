@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 from app.routes.ocrnightmare import ocrnightmare # type: ignore[no-redef] # pylint: disable=import-self
 from ._my_format import _my_format
 
-from .projects import projects_bp
+from .bp.projects import projects_bp
 
 from app.constants.OCRN import OCRN
 

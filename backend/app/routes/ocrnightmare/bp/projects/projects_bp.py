@@ -3,9 +3,9 @@
 
 from typing import TYPE_CHECKING
 from app.constants.OCRN import OCRN
-from app.routes.ocrnightmare.projects import projects_bp # type: ignore[no-redef] # pylint: disable=import-self
+from app.routes.ocrnightmare.bp.projects import projects_bp # type: ignore[no-redef] # pylint: disable=import-self
 from app.repositories.projects_repo import ProjectsRepo
-from .._my_format import _my_format
+from ..._my_format import _my_format
 
 
 if TYPE_CHECKING:
