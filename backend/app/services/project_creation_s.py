@@ -10,11 +10,13 @@ from app.constants.other import PDF,OCR_BASE
 
 from app.repositories.projects_repo import ProjectsRepo
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
+
 
 if TYPE_CHECKING:
     from flask import Flask
     from werkzeug.datastructures import FileStorage
+    from app.types.my_types import ProjDataT
 
 
 class DiskService:
@@ -39,14 +41,10 @@ class ProjectCreationSRV():
         self._current_app = current_app
         self._req_file = req_file
 
-    def _create(self, project_name:str, filename:str)->bool:
+
+    def _create(self, project_name:str, filename:str)->Optional['ProjDataT']:
         new_project_tuple = NewProjTup(project_name, filename, 0)
-        new_project = ProjectsRepo().new_project(new_project_tuple)
-
-        if new_project is None:
-            return False
-        return True
-
+        return ProjectsRepo().new_project(new_project_tuple)
 
 
     def create_project(self):
@@ -57,22 +55,22 @@ class ProjectCreationSRV():
         # logger.info('%s, %s', filename, dircontents)
 
         if project_name in dircontents:
-            return OCRN.FAILinDir
+            return (OCRN.FAILinDir,None)
 
         existing_project = ProjectsRepo().get_project_by_name(project_name)
         if existing_project:
             # logger.info('FAIL proj_int is not None , %s', (proj_int is not None))
-            return OCRN.FAILinDB
+            return (OCRN.FAILinDB,None)
 
         is_stored = DiskService().store_project(project_path,project_name,filename,self._req_file)
         if not is_stored:
-            return OCRN.FAILinDir
+            return (OCRN.FAILinDir,None)
 
-        is_created = self._create(project_name, filename)
-        if not is_created:
-            return OCRN.FAILinCreate
+        new_project = self._create(project_name, filename)
+        if new_project is None:
+            return (OCRN.FAILinCreate,None)
 
-        return (OCRN.S_C_Proj_)[0]
+        return (OCRN.S_C_Proj_,new_project)
 
 
 

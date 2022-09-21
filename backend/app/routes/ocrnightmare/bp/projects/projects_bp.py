@@ -37,16 +37,18 @@ def store()->'Response':
         return _my_format(OCRN.FAILinForm, code=400, result=result)
 
     req_file = request.files['upfile']
-    creation_code = ProjectCreationSRV(current_app,req_file).create_project()
+    creation_code, new_project = ProjectCreationSRV(current_app,req_file).create_project()
 
     if creation_code == OCRN.FAILinDir:
         return _my_format(OCRN.FAILinDir,code=400)
 
     if creation_code == OCRN.FAILinDB:
-        return _my_format(OCRN.FAILinDB)
+        return _my_format(OCRN.FAILinDB,code=400)
 
-    # proj_int = ProjectInterface(secure_filename(req_file.filename)[:PDF])
-    # proj_data = proj_int.get_proj_data()
-    # return _my_format(OCRN.S_C_Proj_,result=proj_data, x=proj_data['name'])
-    return _my_format(OCRN.S_C_Proj_,x='Wrong')
+    if creation_code == OCRN.FAILinCreate:
+        return _my_format(OCRN.FAILinCreate,code=400)
+
+    result = {'project':new_project}
+    return _my_format(OCRN.S_C_Proj_,result=result, x=new_project['name'])
+    # return _my_format(OCRN.S_C_Proj_,x='Wrong')
 
