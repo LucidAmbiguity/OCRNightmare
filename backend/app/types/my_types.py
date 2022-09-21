@@ -91,6 +91,13 @@ ProjDataT = TypedDict(
         'customers': int,
     })
 
+ProjectT = TypedDict(
+    'ProjDataT', {
+        'id':int,
+        'name': str,
+        'status': int,
+        'filename':str,
+    })
 
 class NewPageTup(NamedTuple):
     project_id: int
@@ -119,3 +126,5 @@ CustomerT = TypedDict(
         'id':int,
         'project_id': int
     })
+
+

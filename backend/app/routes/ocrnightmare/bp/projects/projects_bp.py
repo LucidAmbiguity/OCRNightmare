@@ -1,11 +1,18 @@
 """ ocrnightmare projects route Controller """
-from flask import request
-from typing import TYPE_CHECKING
+
+
+from flask import request,current_app
+
+
+
 from app.constants.OCRN import OCRN
 from app.routes.ocrnightmare.bp.projects import projects_bp # type: ignore[no-redef] # pylint: disable=import-self
 from app.repositories.projects_repo import ProjectsRepo
 from app.forms import UploadFile
 
+from typing import TYPE_CHECKING
+
+from app.services.project_creation_s import ProjectCreationSRV
 from ..._my_format import _my_format
 
 
@@ -30,9 +37,16 @@ def store()->'Response':
         return _my_format(OCRN.FAILinForm, code=400, result=result)
 
     req_file = request.files['upfile']
-    print(req_file)
+    creation_code = ProjectCreationSRV(current_app,req_file).create_project()
 
-    # result = {'project': 'project post'}
-    # result = {'project': project}
-    return _my_format(OCRN.Project_,x='project_name',  )
+    if creation_code == OCRN.FAILinDir:
+        return _my_format(OCRN.FAILinDir,code=400)
+
+    if creation_code == OCRN.FAILinDB:
+        return _my_format(OCRN.FAILinDB)
+
+    # proj_int = ProjectInterface(secure_filename(req_file.filename)[:PDF])
+    # proj_data = proj_int.get_proj_data()
+    # return _my_format(OCRN.S_C_Proj_,result=proj_data, x=proj_data['name'])
+    return _my_format(OCRN.S_C_Proj_,x='Wrong')
 

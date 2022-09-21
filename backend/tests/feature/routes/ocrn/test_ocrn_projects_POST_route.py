@@ -3,8 +3,10 @@
 
 
 
+from unittest.mock import patch
 from app.constants.OCRN import OCRN
 from app.constants.other import PDF
+from app.types.my_types import MockCount, MockProject
 
 # from app.types.my_types import MockProject,MockCount
 # from unittest.mock import patch
@@ -60,18 +62,27 @@ def test_ocrn_projects_page_post_FAILinForm_response_messages(Data_w_FileBad, te
     assert response.json['messages'][1]['text'] == OCRN.Realm.text
 
 
+PDF_TestFile_Name_Bad = 'test_input.jpg'
+PDF_TestFile_Name_Good = 'test_input.pdf'
 
-# def test_ocrn_projects_page_post_FAILinDir_response_messages(Data_w_FileBad, test_client):
+p1_pg = MockCount(0)
+p1_cust = MockCount(0)
+proj_mock1 = MockProject(1,PDF_TestFile_Name_Good[:PDF],0,PDF_TestFile_Name_Good,p1_pg,p1_cust)
 
-#     response = test_client.post(Path, data=Data_w_FileBad)
+# @patch('app.interfaces.db_project_if.DBProjI.get_project_by_name', return_value = proj_mock1)
+# @patch('app.interfaces.db_project_if.DBProjI.new_project', return_value = proj_mock1)
+@patch('app.services.project_creation_s.DiskService.listdir', return_value = [PDF_TestFile_Name_Good[:PDF]])
+def test_ocrn_projects_page_post_FAILinDir_response_messages(a, Data_w_FileGood, test_client):
 
-#     assert response.status_code == 400
+    response = test_client.post(Path, data=Data_w_FileGood)
 
-#     assert response.json['messages'][0]['code'] == OCRN.FAILinForm.code
-#     assert response.json['messages'][0]['text'] == OCRN.FAILinForm.text
+    assert response.status_code == 400
 
-#     assert response.json['messages'][1]['code'] == OCRN.Realm.code
-#     assert response.json['messages'][1]['text'] == OCRN.Realm.text
+    assert response.json['messages'][0]['code'] == OCRN.FAILinDir.code
+    assert response.json['messages'][0]['text'] == OCRN.FAILinDir.text
+
+    assert response.json['messages'][1]['code'] == OCRN.Realm.code
+    assert response.json['messages'][1]['text'] == OCRN.Realm.text
 
 
 

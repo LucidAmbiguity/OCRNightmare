@@ -7,7 +7,7 @@ import io
 
 PDF_TestFile = 'tests/feature/routes/ocrn/test_input.pdf'
 PDF_TestFile_Name_Bad = 'test_input.jpg'
-PDF_TestFile_Name_Good = 'test_input.jpg'
+PDF_TestFile_Name_Good = 'test_input.pdf'
 File_FormFieldName = 'upfile'
 
 

@@ -1,57 +1,79 @@
 ============================= test session starts =============================
-platform win32 -- Python 3.9.2, pytest-7.1.2, pluggy-1.0.0 -- C:\xampp\htdocs\python\OCRNightmare\backend\.venv\Scripts\python.exe
-cachedir: .pytest_cache
+platform win32 -- Python 3.9.2, pytest-7.1.2, pluggy-1.0.0
 rootdir: C:\xampp\htdocs\python\OCRNightmare\backend
 plugins: cov-3.0.0
-collecting ... collected 48 items
+collected 73 items
 
-tests/feature/routes/test_home_route.py::test_home_page_get PASSED
-tests/feature/routes/test_home_route.py::test_home_page_post_returns_status_error PASSED
-tests/feature/routes/test_home_route.py::test_home_page_post_returns_status_code_405 PASSED
-tests/feature/routes/test_home_route.py::test_home_page_post_returns_json PASSED
-tests/feature/routes/test_home_route.py::test_home_page_get_returns_json PASSED
-tests/feature/routes/admin/test_admin_route.py::test_admin_page_get PASSED
-tests/feature/routes/admin/test_admin_route.py::test_admin_response_shape PASSED
-tests/feature/routes/admin/test_admin_users_pub_id_delete.py::test_admin_users_pub_id_delete_page_get_returns_200 PASSED
-tests/feature/routes/admin/test_admin_users_pub_id_delete.py::test_admin_users_pub_id_delete_response_shape PASSED
-tests/feature/routes/admin/test_admin_users_pub_id_delete.py::test_admin_users_pub_id_delete_deletes_a_user PASSED
-tests/feature/routes/admin/test_admin_users_pub_id_delete.py::test_admin_users_pub_id_delete_returns_404_when_pub_id_not_found PASSED
-tests/feature/routes/admin/test_admin_users_route.py::test_admin_users_page_get_returns_200 PASSED
-tests/feature/routes/admin/test_admin_users_route.py::test_admin_users_response_shape PASSED
-tests/feature/routes/admin/test_admin_users_route.py::test_admin_users_gets_list_of_users PASSED
-tests/feature/routes/admin/test_admin_users_uid_delete.py::test_admin_users_uid_delete_page_get_returns_200 PASSED
-tests/feature/routes/admin/test_admin_users_uid_delete.py::test_admin_users_uid_delete_response_shape PASSED
-tests/feature/routes/admin/test_admin_users_uid_delete.py::test_admin_users_uid_delete_deletes_a_user PASSED
-tests/feature/routes/admin/test_admin_users_uid_delete.py::test_admin_users_uid_delete_returns_404_when_uid_not_found PASSED
-tests/feature/routes/admin/test_admin_users_uid_route.py::test_admin_users_uid_page_get_returns_200 PASSED
-tests/feature/routes/admin/test_admin_users_uid_route.py::test_admin_users_uid_response_shape PASSED
-tests/feature/routes/admin/test_admin_users_uid_route.py::test_admin_users_uid_gets_a_user PASSED
-tests/feature/routes/admin/test_admin_users_uid_route.py::test_admin_users_uid_returns_404_when_uid_not_found PASSED
-tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_page_GET_returns_405 PASSED
-tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_page_post_response_shape PASSED
-tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_page_headers_contains_basic_auth_info_for_missing_auth_info PASSED
-tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_bad_username_fails PASSED
-tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_bad_password_fails PASSED
-tests/feature/routes/auth/test_auth_login_route.py::test_auth_login_good_creds_pass PASSED
-tests/feature/routes/auth/test_auth_register_route.py::test_auth_register_page_GET_returns_405 PASSED
-tests/feature/routes/auth/test_auth_register_route.py::test_auth_register_page_GET_returns_json PASSED
-tests/feature/routes/auth/test_auth_register_route.py::test_auth_register_page_post_response_shape PASSED
-tests/feature/routes/auth/test_auth_register_route.py::test_auth_register_page_headers_contains_basic_auth_info_for_missing_auth_info PASSED
-tests/feature/routes/auth/test_auth_register_route.py::test_username_less_than_3_is_error PASSED
-tests/feature/routes/auth/test_auth_register_route.py::test_existing_username_fails_to_register PASSED
-tests/feature/routes/auth/test_auth_register_route.py::test_short_password_fails_to_register PASSED
-tests/feature/routes/auth/test_auth_register_route.py::test_valid_creds_fail_in_db_creation_unknown_failure PASSED
-tests/feature/routes/auth/test_auth_register_route.py::test_valid_creds_do_register PASSED
-tests/feature/routes/auth/test_auth_route.py::test_auth_page_get PASSED
-tests/feature/routes/auth/test_auth_route.py::test_auth_page_get_returns_json PASSED
-tests/feature/routes/auth/test_auth_route.py::test_auth_page_get_response_shape PASSED
-tests/feature/routes/auth/test_auth_route.py::test_auth_page_get_response_value PASSED
-tests/feature/routes/ocrn/test_ocrn_projects_route.py::test_ocrn_project_page_get PASSED
-tests/feature/routes/ocrn/test_ocrn_projects_route.py::test_ocrn_projects_project_page_get PASSED
-tests/feature/routes/ocrn/test_ocrn_route.py::test_ocrn_page_get PASSED
-tests/feature/routes/ocrn/test_ocrn_route.py::test_ocrn_response_shape PASSED
-tests/feature/routes/ocrn/test_ocrn_route.py::test_ocrn_response_messages PASSED
-tests/feature/routes/ocrn/test_ocrn_route.py::test_ocrn_response_result_data PASSED
-tests/unit/config_env/test_config.py::test_config_class_exists_and_has_expected_attributes PASSED
+tests\feature\routes\test_home_route.py .....                            [  6%]
+tests\feature\routes\admin\test_admin_route.py ..                        [  9%]
+tests\feature\routes\admin\test_admin_users_pub_id_delete.py ....        [ 15%]
+tests\feature\routes\admin\test_admin_users_route.py ...                 [ 19%]
+tests\feature\routes\admin\test_admin_users_uid_delete.py ....           [ 24%]
+tests\feature\routes\admin\test_admin_users_uid_route.py ....            [ 30%]
+tests\feature\routes\auth\test_auth_login_route.py ......                [ 38%]
+tests\feature\routes\auth\test_auth_register_route.py .........          [ 50%]
+tests\feature\routes\auth\test_auth_route.py ....                        [ 56%]
+tests\feature\routes\ocrn\test_ocrn_projects_GET_route.py ....           [ 61%]
+tests\feature\routes\ocrn\test_ocrn_projects_POST_route.py .....F        [ 69%]
+tests\feature\routes\ocrn\test_ocrn_route.py ....                        [ 75%]
+tests\unit\config_env\test_config.py ..                                  [ 78%]
+tests\unit\models\test_customer_u_.py ....                               [ 83%]
+tests\unit\models\test_page_u_.py ....                                   [ 89%]
+tests\unit\models\test_project_u_.py ....                                [ 94%]
+tests\unit\models\test_user_u_.py ....                                   [100%]
 
-============================= 48 passed in 1.91s ==============================
+================================== FAILURES ===================================
+__________ test_ocrn_projects_page_post_FAILinDir_response_messages ___________
+
+Data_w_FileGood = {'upfile': (<_io.BytesIO object at 0x000001437EA8A4A0>, 'test_input.pdf')}
+test_client = <FlaskClient <Flask 'app'>>
+
+    def test_ocrn_projects_page_post_FAILinDir_response_messages(Data_w_FileGood, test_client):
+    
+>       response = test_client.post(Path, data=Data_w_FileGood)
+
+tests\feature\routes\ocrn\test_ocrn_projects_POST_route.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\lib\site-packages\werkzeug\test.py:1140: in post
+    return self.open(*args, **kw)
+.venv\lib\site-packages\flask\testing.py:217: in open
+    return super().open(
+.venv\lib\site-packages\werkzeug\test.py:1089: in open
+    response = self.run_wsgi_app(request.environ, buffered=buffered)
+.venv\lib\site-packages\werkzeug\test.py:956: in run_wsgi_app
+    rv = run_wsgi_app(self.application, environ, buffered=buffered)
+.venv\lib\site-packages\werkzeug\test.py:1237: in run_wsgi_app
+    app_rv = app(environ, start_response)
+.venv\lib\site-packages\flask\app.py:2095: in __call__
+    return self.wsgi_app(environ, start_response)
+.venv\lib\site-packages\flask\app.py:2080: in wsgi_app
+    response = self.handle_exception(e)
+.venv\lib\site-packages\flask_cors\extension.py:165: in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+.venv\lib\site-packages\flask\app.py:2077: in wsgi_app
+    response = self.full_dispatch_request()
+.venv\lib\site-packages\flask\app.py:1525: in full_dispatch_request
+    rv = self.handle_user_exception(e)
+.venv\lib\site-packages\flask_cors\extension.py:165: in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+.venv\lib\site-packages\flask\app.py:1523: in full_dispatch_request
+    rv = self.dispatch_request()
+.venv\lib\site-packages\flask\app.py:1509: in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+app\routes\ocrnightmare\bp\projects\projects_bp.py:40: in store
+    creation_code = ProjectCreationSRV(current_app,req_file).create_project()
+app\services\project_creation_s.py:56: in create_project
+    dircontents = DiskService().listdir(OCR_BASE)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <app.services.project_creation_s.DiskService object at 0x000001437EAECA30>
+path = 'instance/data'
+
+    def listdir(self,path:str)->list:
+>       return os.listdir(path)
+E       FileNotFoundError: [WinError 3] The system cannot find the path specified: 'instance/data'
+
+app\services\project_creation_s.py:31: FileNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/feature/routes/ocrn/test_ocrn_projects_POST_route.py::test_ocrn_projects_page_post_FAILinDir_response_messages
+======================== 1 failed, 72 passed in 2.35s =========================

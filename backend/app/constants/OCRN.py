@@ -17,6 +17,7 @@ class OCRN():
     FAILinForm =  ApiResp('OCRN0005', 'FAIL form validation. PDF files only also be sure you selected/submitted a file for upload')
     FAILinDir = ApiResp('OCRN0006', 'Project or Filename already exists in filesystem rename your file or click home to start again')
     FAILinDB = ApiResp('OCRN0007', 'Project or Filename already exists in database rename your file or click home to start again')
+    S_C_Proj_ = ApiResp('OCRN00008', lambda x: f'Project {x} Has been created')
 
     # UserDel_ = ApiResp('OCRN0001', lambda x: f'User {x} : Has been deleted')
     # # UserDel_: tuple[str, Callable[[str],str]] = ('OCRN0001', lambda x: f'User {x} : Has been deleted')
