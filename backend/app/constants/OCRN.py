@@ -13,6 +13,10 @@ class OCRN():
     Realm = ApiResp('OCRN0001', 'OCRN by Lucid Ambiguity')
     ROOT =  ApiResp('OCRN0002', 'OCRN Main Application Root')
     Projects =  ApiResp('OCRN0003', 'OCRN Projects List')
+    Project_ =  ApiResp('OCRN0004',  lambda x: f'Project {x} : Information')
+    FAILinForm =  ApiResp('OCRN0005', 'FAIL form validation. PDF files only also be sure you selected/submitted a file for upload')
+    FAILinDir = ApiResp('OCRN0006', 'Project or Filename already exists in filesystem rename your file or click home to start again')
+    FAILinDB = ApiResp('OCRN0007', 'Project or Filename already exists in database rename your file or click home to start again')
 
     # UserDel_ = ApiResp('OCRN0001', lambda x: f'User {x} : Has been deleted')
     # # UserDel_: tuple[str, Callable[[str],str]] = ('OCRN0001', lambda x: f'User {x} : Has been deleted')

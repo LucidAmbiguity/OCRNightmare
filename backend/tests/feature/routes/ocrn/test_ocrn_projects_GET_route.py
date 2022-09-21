@@ -7,7 +7,7 @@ from app.constants.OCRN import OCRN
 from app.types.my_types import MockProject,MockCount
 from unittest.mock import patch
 from tests.helpers import (
-    is_response_shape_ocrn_projects,
+    is_response_shape_ocrn_many_projects,
 
 )
 
@@ -30,14 +30,14 @@ def test_ocrn_projects_response_shape(a, test_client):
 
     response = test_client.get(Path)
     assert response.status_code == 200
-    assert is_response_shape_ocrn_projects(response.json)
+    assert is_response_shape_ocrn_many_projects(response.json)
 
 @patch('app.interfaces.db_project_if.DBProjI.get_all', return_value = [proj_mock1,proj_mock2])
 def test_ocrn_projects_response_messages(a, test_client):
 
     response = test_client.get(Path)
     assert response.status_code == 200
-    assert is_response_shape_ocrn_projects(response.json)
+    assert is_response_shape_ocrn_many_projects(response.json)
 
     assert response.json['messages'][0]['code'] == OCRN.Projects.code
     assert response.json['messages'][0]['text'] == OCRN.Projects.text
@@ -49,7 +49,7 @@ def test_ocrn_projects_response_messages(a, test_client):
 def test_ocrn_projects_response_result_data(a, test_client):
 
     response = test_client.get(Path)
-    assert is_response_shape_ocrn_projects(response.json)
+    assert is_response_shape_ocrn_many_projects(response.json)
 
     assert response.json['result']['projects'] ==  [
         {

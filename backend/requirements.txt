@@ -16,6 +16,7 @@ Flask-Cors==3.0.10
 flask-marshmallow==0.14.0
 Flask-Migrate==3.1.0
 Flask-SQLAlchemy==2.5.1
+Flask-WTF==1.0.1
 greenlet==1.1.2
 importlib-metadata==4.12.0
 iniconfig==1.1.1
@@ -28,6 +29,8 @@ MarkupSafe==2.1.1
 marshmallow==3.17.1
 marshmallow-sqlalchemy==0.28.1
 mccabe==0.7.0
+mypy==0.971
+mypy-extensions==0.4.3
 mysqlclient==2.1.1
 packaging==21.3
 platformdirs==2.5.2
@@ -54,4 +57,5 @@ types-SQLAlchemy==1.4.51
 typing_extensions==4.2.0
 Werkzeug==2.1.2
 wrapt==1.14.1
+WTForms==3.0.1
 zipp==3.8.0
