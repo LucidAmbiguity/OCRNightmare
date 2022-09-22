@@ -5,6 +5,8 @@ import json
 from werkzeug.exceptions import MethodNotAllowed,HTTPException
 
 from flask import Flask,jsonify
+
+from app.constants.OCRN import OCRN
 # from .extensions import db,ma,migrate,bcrypt,cors
 from .extensions import db, ma, migrate, bcrypt, cors
 
@@ -61,11 +63,21 @@ def create_app(test_config: str=None) -> Flask:
             'messages' : [{
                     'code': err.code,
                     'text': err.name,
+                  },
+                  {
+                    'code': OCRN.Realm.code,
+                    'text': OCRN.Realm.text,
                   }],
-            'result': {'description': err.description}
+            'result': {'description': err.description,
+                       'errors':{
+                            'code': err.code,
+                            'text': err.name,
+                        }
+            }
         })
         response.content_type = 'application/json'
         return response
+
 
     @app.errorhandler(MethodNotAllowed) #type: ignore[misc]
     def handle_exception_method_not_allowed(err)->'Response':
@@ -80,7 +92,12 @@ def create_app(test_config: str=None) -> Flask:
                     'code': err.code,
                     'text': err.name,
                   }],
-            'result': {'description': err.description}
+            'result': {'description': err.description,
+                       'errors':{
+                            'code': err.code,
+                            'text': err.name,
+                        }
+            }
         })
         response.content_type = 'application/json'
         return response

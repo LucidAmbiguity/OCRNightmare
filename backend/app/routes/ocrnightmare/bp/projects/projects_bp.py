@@ -1,7 +1,7 @@
 """ ocrnightmare projects route Controller """
 
 
-from flask import request,current_app
+from flask import request,current_app,abort
 
 
 
@@ -20,7 +20,7 @@ if TYPE_CHECKING:
     from flask import Response
 
 @projects_bp.route('', methods=['GET']) # type: ignore[misc, attr-defined]
-def show()->'Response':
+def index()->'Response':
     """Root route of ocrnightmare projects Module"""
     project_list = ProjectsRepo().get_all_projects()
 
@@ -51,4 +51,15 @@ def store()->'Response':
     result = {'project':new_project}
     return _my_format(OCRN.S_C_Proj_,result=result, x=new_project['name'])
     # return _my_format(OCRN.S_C_Proj_,x='Wrong')
+
+@projects_bp.route( '/<p_name>', methods=['GET']) # type: ignore[attr-defined,misc]
+def show(p_name: str)->'Response':
+
+    proj_data = ProjectsRepo().get_project_by_name(p_name)
+    if proj_data is None:
+        abort(404)
+    result = {'project':proj_data}
+    print('/<p_name>:',p_name,proj_data)
+    return _my_format(OCRN.Project_,result=result,x=proj_data['name'])
+
 

@@ -54,9 +54,10 @@ class ProjectsRepo:
 
         return project_list
 
-    def get_project_by_name(self, name:Optional[str])->Optional['Project']:
+    def get_project_by_name(self, name:Optional[str])->Optional['ProjDataT']:
+        print('get_project_by_name:',name)
         project = self._db_proj_i.get_project_by_name(name)
-        return project
+        return self._return_logic(project)
 
 
     def new_project(self,new_project:'NewProjTup')->Optional[ProjDataT]:

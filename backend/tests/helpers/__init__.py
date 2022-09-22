@@ -108,6 +108,23 @@ def is_response_shape_ocrn_one_project(res_object):
 
 
 def is_response_shape_ocrn_error(res_object):
+    # print()
+    # print('is_response_shape_ocrn_error:',res_object)
+
+    # assert    'code'      in res_object.keys()
+    # assert    'messages'  in res_object.keys()
+    # assert    'result'    in res_object.keys()
+    # assert    'status'    in res_object.keys()
+
+    # assert    'code'      in res_object['messages'][0].keys()
+    # assert    'text'      in res_object['messages'][0].keys()
+    # assert    'code'      in res_object['messages'][1].keys()
+    # assert    'text'      in res_object['messages'][1].keys()
+
+    # assert    'errors'  in res_object['result'].keys()
+
+    # assert    isinstance(res_object['result'],dict)
+
     return all([
         'code'      in res_object.keys(),
         'messages'  in res_object.keys(),
