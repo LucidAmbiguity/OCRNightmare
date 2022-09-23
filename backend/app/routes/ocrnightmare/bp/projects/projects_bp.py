@@ -7,7 +7,7 @@ from flask import request,current_app,abort
 
 from app.constants.OCRN import OCRN
 from app.routes.ocrnightmare.bp.projects import projects_bp # type: ignore[no-redef] # pylint: disable=import-self
-from app.repositories.projects_repo import ProjectsRepo
+from app.repositories import ProjectsRepo
 from app.forms import UploadFile
 
 from typing import TYPE_CHECKING

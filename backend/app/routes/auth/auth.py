@@ -6,8 +6,7 @@ from flask import request, current_app
 
 
 from app.routes.auth import auth  # type: ignore[no-redef] # pylint: disable=import-self
-from app.repositories.user_repo import UserRepo
-from app.repositories.users_repo import UsersRepo
+from app.repositories import UserRepo,UsersRepo
 from app.types.my_types import NewUserTup
 from app.constants.AUTH import REGISTER,LOGIN
 from app.services.login_s import login_service

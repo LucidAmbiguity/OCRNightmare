@@ -19,20 +19,20 @@ p2_cust = MockCount(0)
 proj_mock1 = MockProject(1,'project001',0,'project001.pdf',p1_pg,p1_cust)
 proj_mock2 = MockProject(2,'project002',1,'project002.pdf',p2_pg,p2_cust)
 
-@patch('app.interfaces.db_project_if.DBProjI.get_all', return_value = [proj_mock1,proj_mock2])
+@patch('app.repositories.projects_repo.DBProjI.get_all', return_value = [proj_mock1,proj_mock2])
 def test_ocrn_projects_page_get(a, test_client):
 
     response = test_client.get(Path)
     assert response.status_code == 200
 
-@patch('app.interfaces.db_project_if.DBProjI.get_all', return_value = [proj_mock1,proj_mock2])
+@patch('app.repositories.projects_repo.DBProjI.get_all', return_value = [proj_mock1,proj_mock2])
 def test_ocrn_projects_response_shape(a, test_client):
 
     response = test_client.get(Path)
     assert response.status_code == 200
     assert is_response_shape_ocrn_many_projects(response.json)
 
-@patch('app.interfaces.db_project_if.DBProjI.get_all', return_value = [proj_mock1,proj_mock2])
+@patch('app.repositories.projects_repo.DBProjI.get_all', return_value = [proj_mock1,proj_mock2])
 def test_ocrn_projects_response_messages(a, test_client):
 
     response = test_client.get(Path)
@@ -45,7 +45,7 @@ def test_ocrn_projects_response_messages(a, test_client):
     assert response.json['messages'][1]['code'] == OCRN.Realm.code
     assert response.json['messages'][1]['text'] == OCRN.Realm.text
 
-@patch('app.interfaces.db_project_if.DBProjI.get_all', return_value = [proj_mock1,proj_mock2])
+@patch('app.repositories.projects_repo.DBProjI.get_all', return_value = [proj_mock1,proj_mock2])
 def test_ocrn_projects_response_result_data(a, test_client):
 
     response = test_client.get(Path)

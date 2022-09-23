@@ -5,7 +5,7 @@ import jwt
 from datetime import datetime, timedelta
 from werkzeug.security import  check_password_hash
 
-from app.repositories.user_repo import UserRepo
+from app.repositories import UserRepo
 from app.types.my_types import AToken
 
 if TYPE_CHECKING:

@@ -82,7 +82,7 @@ def test_ocrn_projects_page_post_FAILinDir_response_messages(a, Data_w_FileGood,
 
 
 # @patch('app.interfaces.db_project_if.DBProjI.new_project', return_value = proj_mock1)
-@patch('app.interfaces.db_project_if.DBProjI.get_project_by_name', return_value = proj_mock1)
+@patch('app.repositories.projects_repo.DBProjI.get_by_name', return_value = proj_mock1)
 @patch('app.services.project_creation_s.DiskService.listdir', return_value = [])
 def test_ocrn_projects_page_post_FAILinDB_response_messages(a,b, Data_w_FileGood, test_client):
 
@@ -96,7 +96,7 @@ def test_ocrn_projects_page_post_FAILinDB_response_messages(a,b, Data_w_FileGood
 
 
 @patch('app.services.project_creation_s.DiskService.store_project', return_value = False)
-@patch('app.interfaces.db_project_if.DBProjI.get_project_by_name', return_value = None)
+@patch('app.repositories.projects_repo.DBProjI.get_by_name', return_value = None)
 @patch('app.services.project_creation_s.DiskService.listdir', return_value = [])
 def test_ocrn_projects_page_post_FAILinDir_response_messages_issue_with_store_Project(a,b,c, Data_w_FileGood, test_client):
 
@@ -108,9 +108,9 @@ def test_ocrn_projects_page_post_FAILinDir_response_messages_issue_with_store_Pr
     assert response.json['messages'][0]['text'] == OCRN.FAILinDir.text
 
 
-@patch('app.interfaces.db_project_if.DBProjI.new_project', return_value = None)
+@patch('app.repositories.projects_repo.DBProjI.new_project', return_value = None)
 @patch('app.services.project_creation_s.DiskService.store_project', return_value = True)
-@patch('app.interfaces.db_project_if.DBProjI.get_project_by_name', return_value = None)
+@patch('app.repositories.projects_repo.DBProjI.get_by_name', return_value = None)
 @patch('app.services.project_creation_s.DiskService.listdir', return_value = [])
 def test_ocrn_projects_page_post_FAILinDB_response_messages_issue_with_create_Project(a,b,c,d, Data_w_FileGood, test_client):
 
@@ -122,9 +122,9 @@ def test_ocrn_projects_page_post_FAILinDB_response_messages_issue_with_create_Pr
     assert response.json['messages'][0]['text'] == OCRN.FAILinCreate.text
 
 
-@patch('app.interfaces.db_project_if.DBProjI.new_project', return_value = proj_mock1)
+@patch('app.repositories.projects_repo.DBProjI.new_project', return_value = proj_mock1)
 @patch('app.services.project_creation_s.DiskService.store_project', return_value = True)
-@patch('app.interfaces.db_project_if.DBProjI.get_project_by_name', return_value = None)
+@patch('app.repositories.projects_repo.DBProjI.get_by_name', return_value = None)
 @patch('app.services.project_creation_s.DiskService.listdir', return_value = [])
 def test_ocrn_projects_page_post_SUCCESS_return_shape_and_codes(a,b,c,d, Data_w_FileGood, test_client):
 
@@ -137,9 +137,9 @@ def test_ocrn_projects_page_post_SUCCESS_return_shape_and_codes(a,b,c,d, Data_w_
     assert response.json['messages'][0]['text'] == OCRN.S_C_Proj_.text(PDF_TestFile_Name_Good[:PDF])
 
 
-@patch('app.interfaces.db_project_if.DBProjI.new_project', return_value = proj_mock1)
+@patch('app.repositories.projects_repo.DBProjI.new_project', return_value = proj_mock1)
 @patch('app.services.project_creation_s.DiskService.store_project', return_value = True)
-@patch('app.interfaces.db_project_if.DBProjI.get_project_by_name', return_value = None)
+@patch('app.repositories.projects_repo.DBProjI.get_by_name', return_value = None)
 @patch('app.services.project_creation_s.DiskService.listdir', return_value = [])
 def test_ocrn_projects_page_post_SUCCESS_returns_a_new_project (a,b,c,d, Data_w_FileGood, test_client):
 

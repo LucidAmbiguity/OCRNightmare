@@ -37,7 +37,6 @@ class ProjectsRepo:
         return project_
 
 
-
     def get_all_projects(self)->list['ProjDataT']:
         projects_all = self._db_proj_i.get_all()
 
@@ -56,7 +55,7 @@ class ProjectsRepo:
 
     def get_project_by_name(self, name:Optional[str])->Optional['ProjDataT']:
         print('get_project_by_name:',name)
-        project = self._db_proj_i.get_project_by_name(name)
+        project = self._db_proj_i.get_by_name(name)
         return self._return_logic(project)
 
 

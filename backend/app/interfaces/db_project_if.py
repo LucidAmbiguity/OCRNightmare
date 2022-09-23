@@ -14,7 +14,7 @@ class DBProjI:
         result: list[Project] = Project.query.all()  # type: ignore[misc]
         return result
 
-    def get_project_by_name(self, name:Optional[str])->Optional[Project]:
+    def get_by_name(self, name:Optional[str])->Optional[Project]:
         return cast( Project, Project.query.filter_by(name=name).first()) # type: ignore[misc]
 
 

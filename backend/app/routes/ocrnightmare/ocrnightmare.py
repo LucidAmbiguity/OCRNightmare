@@ -2,17 +2,22 @@
 
 
 from typing import TYPE_CHECKING
-from app.routes.ocrnightmare import ocrnightmare # type: ignore[no-redef] # pylint: disable=import-self
+
+from app.routes.ocrnightmare import ocrnightmare
+
+from app.constants.OCRN import OCRN
+
 from ._my_format import _my_format
 
 from .bp.projects import projects_bp
+from .bp.extract import extract_bp # type: ignore[no-redef] # pylint: disable=import-self
 
-from app.constants.OCRN import OCRN
 
 if TYPE_CHECKING:
     from flask import Response
 
 
+ocrnightmare.register_blueprint(extract_bp,         url_prefix='/projects/<project_name>/extract')
 ocrnightmare.register_blueprint(projects_bp,        url_prefix='/projects')  # type: ignore[ attr-defined]
 
 @ocrnightmare.route('/', methods=['GET', 'POST']) # type: ignore[misc, attr-defined]

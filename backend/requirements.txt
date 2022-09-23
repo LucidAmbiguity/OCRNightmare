@@ -43,6 +43,7 @@ pylint==2.14.3
 pylint-flask==0.6
 pylint-flask-sqlalchemy==0.2.0
 pylint-plugin-utils==0.7
+PyMuPDF==1.20.2
 pyparsing==3.0.9
 pytest==7.1.2
 pytest-cov==3.0.0

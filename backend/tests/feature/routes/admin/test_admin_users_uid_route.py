@@ -11,14 +11,14 @@ from tests.helpers import (
 # pylint: disable=invalid-name unused-import
 Path = '/admin/users/'
 user_mock1 = MockUserAlso(1,'pub_id1','name1',False)
-@patch('app.interfaces.db_user_if.DBUserI.get_user_by_id', return_value = user_mock1)
+@patch('app.repositories.user_repo.DBUserI.get_user_by_id', return_value = user_mock1)
 def test_admin_users_uid_page_get_returns_200(a, test_client):
     _path = Path+'1'
     response = test_client.get(_path)
     assert response.status_code == 200
 
 
-@patch('app.interfaces.db_user_if.DBUserI.get_user_by_id', return_value = user_mock1)
+@patch('app.repositories.user_repo.DBUserI.get_user_by_id', return_value = user_mock1)
 def test_admin_users_uid_response_shape(a, test_client):
     _path = Path+'1'
     response = test_client.get(_path)
@@ -26,7 +26,7 @@ def test_admin_users_uid_response_shape(a, test_client):
     assert is_response_shape_admin(response.json)
 
 
-@patch('app.interfaces.db_user_if.DBUserI.get_user_by_id', return_value = user_mock1)
+@patch('app.repositories.user_repo.DBUserI.get_user_by_id', return_value = user_mock1)
 def test_admin_users_uid_gets_a_user(a, test_client):
     _path = Path+'1'
     response = test_client.get(_path)

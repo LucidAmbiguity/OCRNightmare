@@ -52,7 +52,7 @@ def test_auth_login_page_headers_contains_basic_auth_info_for_missing_auth_info(
 
 
 
-@patch('app.interfaces.db_user_if.DBUserI.get_user_by_username', return_value = None)
+@patch('app.repositories.user_repo.DBUserI.get_user_by_username', return_value = None)
 def test_auth_login_bad_username_fails(a,test_client):
 
     username = 'TEST1'
@@ -69,7 +69,7 @@ def test_auth_login_bad_username_fails(a,test_client):
 
 
 user_mock = MockUser('pub_id','name','mockpassword',False)
-@patch('app.interfaces.db_user_if.DBUserI.get_user_by_username', return_value = user_mock)
+@patch('app.repositories.user_repo.DBUserI.get_user_by_username', return_value = user_mock)
 def test_auth_login_bad_password_fails(a,test_client):
 
     username = 'TEST1'
@@ -88,7 +88,7 @@ def test_auth_login_bad_password_fails(a,test_client):
 mock_pass = 'password'
 mock_pass_hash = generate_password_hash(mock_pass, method='sha256')
 user_mock = MockUser('pub_id','name',mock_pass_hash,False)
-@patch('app.interfaces.db_user_if.DBUserI.get_user_by_username', return_value = user_mock)
+@patch('app.repositories.user_repo.DBUserI.get_user_by_username', return_value = user_mock)
 def test_auth_login_good_creds_pass(a,test_client):
 
     username = 'TEST1'

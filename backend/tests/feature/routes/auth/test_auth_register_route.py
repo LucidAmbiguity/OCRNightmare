@@ -75,7 +75,7 @@ def test_username_less_than_3_is_error(test_client):
     assert response.json['messages'][1]['text'] == "Basic realm: 'login required'"
 
 
-@patch('app.interfaces.db_user_if.DBUserI.get_user_by_username', return_value = 'not None')
+@patch('app.repositories.user_repo.DBUserI.get_user_by_username', return_value = 'not None')
 def test_existing_username_fails_to_register(my_mock,test_client,user1_creds):
 
     response = test_client.post(Path, headers={'Authorization': f'Basic {user1_creds[0]}'})
@@ -89,7 +89,7 @@ def test_existing_username_fails_to_register(my_mock,test_client,user1_creds):
     assert response.json['messages'][1]['text'] == "Basic realm: 'login required'"
 
 
-@patch('app.interfaces.db_user_if.DBUserI.get_user_by_username', return_value = None)
+@patch('app.repositories.user_repo.DBUserI.get_user_by_username', return_value = None)
 def test_short_password_fails_to_register(my_mock,test_client):
 
     username = 'TEST1'
@@ -109,8 +109,8 @@ def test_short_password_fails_to_register(my_mock,test_client):
 
 
 
-@patch('app.interfaces.db_user_if.DBUserI.get_user_by_username', return_value = None)
-@patch('app.interfaces.db_user_if.DBUserI.new_user', return_value = None)
+@patch('app.repositories.user_repo.DBUserI.get_user_by_username', return_value = None)
+@patch('app.repositories.users_repo.DBUserI.new_user', return_value = None)
 def test_valid_creds_fail_in_db_creation_unknown_failure(a,b,test_client):
 
     username = 'TEST1'
@@ -131,8 +131,8 @@ def test_valid_creds_fail_in_db_creation_unknown_failure(a,b,test_client):
 
 
 
-@patch('app.interfaces.db_user_if.DBUserI.get_user_by_username', return_value = None)
-@patch('app.interfaces.db_user_if.DBUserI.new_user', return_value = {'public_id':'pubid'})
+@patch('app.repositories.user_repo.DBUserI.get_user_by_username', return_value = None)
+@patch('app.repositories.users_repo.DBUserI.new_user', return_value = {'public_id':'pubid'})
 def test_valid_creds_do_register(a,b,test_client):
 
     username = 'TEST1'

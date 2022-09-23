@@ -1,6 +1,5 @@
 """ Project Creation Service"""
 
-import os
 from werkzeug.utils import secure_filename
 
 # from app.logger import logger
@@ -8,8 +7,8 @@ from app.types.my_types import NewProjTup
 from app.constants.OCRN import OCRN
 from app.constants.other import PDF,OCR_BASE
 
-from app.repositories.projects_repo import ProjectsRepo
-
+from app.repositories import ProjectsRepo
+from .disk_service import DiskService
 from typing import TYPE_CHECKING, Optional
 
 
@@ -17,21 +16,6 @@ if TYPE_CHECKING:
     from flask import Flask
     from werkzeug.datastructures import FileStorage
     from app.types.my_types import ProjDataT
-
-
-class DiskService:
-    """ AN IO Service"""
-
-    def store_project(self,project_path:str,project_name:str,filename:str,req_file:'FileStorage')->bool:
-        os.mkdir(os.path.join(project_path, 'data', project_name))
-        req_file.save(os.path.join(
-            project_path, 'data', project_name, filename
-        ))
-        return True
-
-    def listdir(self,path:str)->list:
-        return os.listdir(path)
-
 
 
 class ProjectCreationSRV():

@@ -92,7 +92,7 @@ ProjDataT = TypedDict(
     })
 
 ProjectT = TypedDict(
-    'ProjDataT', {
+    'ProjectT', {
         'id':int,
         'name': str,
         'status': int,
@@ -126,5 +126,34 @@ CustomerT = TypedDict(
         'id':int,
         'project_id': int
     })
+
+
+## Massage
+
+CharWBB = tuple[str, float, float, float, float, float, float, float]
+StrWBB = tuple[str, list[CharWBB]]
+
+PageWBB = list[StrWBB]
+
+XtracDoc = tuple[PageWBB,tuple[float,float]]
+
+@dataclass
+class MyArgs():
+    """arg container"""
+    input: str
+    output: str
+    password: str
+    pages: str
+    convert_white: bool
+    noligatures: bool
+    extra_spaces: bool
+    mode: str
+    grid: int
+    fontsize: int
+    noformfeed: bool
+    skip_empty: bool
+
+
+## END Massage ###
 
 

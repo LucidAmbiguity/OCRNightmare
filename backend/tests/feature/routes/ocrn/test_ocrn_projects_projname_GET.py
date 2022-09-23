@@ -21,7 +21,7 @@ proj_mock1 = MockProject(1,'project001',0,'project001.pdf',p1_pg,p1_cust)
 # p2_cust = MockCount(0)
 # proj_mock2 = MockProject(2,'project002',1,'project002.pdf',p2_pg,p2_cust)
 
-@patch('app.interfaces.db_project_if.DBProjI.get_project_by_name', return_value = proj_mock1)
+@patch('app.repositories.projects_repo.DBProjI.get_by_name', return_value = proj_mock1)
 def test_ocrn_projects_projname_get_SUCCESS_return_shape_and_codes_messages(a, test_client):
 
     response = test_client.get(Path(proj_mock1.name))
@@ -45,7 +45,7 @@ def test_ocrn_projects_projname_get_SUCCESS_return_shape_and_codes_messages(a, t
             'status': proj_mock1.status,
         }
 
-@patch('app.interfaces.db_project_if.DBProjI.get_project_by_name', return_value = None)
+@patch('app.repositories.projects_repo.DBProjI.get_by_name', return_value = None)
 def test_ocrn_projects_projname_get_Fail(a, test_client):
 
     response = test_client.get(Path(proj_mock1.name))

@@ -4,8 +4,7 @@ from typing import  TYPE_CHECKING
 from flask import abort
 from .._my_format import _my_format
 from app.routes.admin.users import users # type: ignore[no-redef] # pylint: disable=import-self unused-import
-from app.repositories.users_repo import UsersRepo
-from app.repositories.user_repo import UserRepo
+from app.repositories import UsersRepo, UserRepo
 from app.constants.ADMIN import ADMIN
 
 

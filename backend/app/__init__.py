@@ -91,6 +91,10 @@ def create_app(test_config: str=None) -> Flask:
             'messages' : [{
                     'code': err.code,
                     'text': err.name,
+                  },
+                  {
+                    'code': OCRN.Realm.code,
+                    'text': OCRN.Realm.text,
                   }],
             'result': {'description': err.description,
                        'errors':{
