@@ -6,7 +6,22 @@ from app.types.my_types import XtracDoc,MockCount
 
 
 
-class MockReturn:
+class MockReturn1:
+    id = 1
+    name= 'filename'
+    status = 0
+    filename = 'filename.pdf'
+    pages= MockCount(7)
+    customers= MockCount(0)
+    # def filter_by(self,*args,**Kwargs):
+    #     return self
+    # def first(self,*args,**Kwargs):
+    #     return self
+    # def first_or_404(self,*args,**Kwargs):
+    #     return self
+    def save_extracted(self,*args,**Kwargs):
+        return True
+class MockReturn2:
     id = 1
     name= 'filename'
     status = 1
@@ -22,7 +37,8 @@ class MockReturn:
     def save_extracted(self,*args,**Kwargs):
         return True
 
-mock_return = MockReturn()
+mock_return = MockReturn1()
+mock_return_2 = MockReturn2()
 
 
 
@@ -59,3 +75,16 @@ def test_build_page():
     assert project.pages.all()[0].text_lines.count() == 2
     assert project.pages.all()[0].text_lines.all()[0].chars.count() == 2
 
+
+@patch('app.services.extraction_s.make_svg_bat.make_svg_bat',return_value=None)
+@patch('app.services.extraction_s.extract_data_all',return_value=xtract_doc)
+@patch('app.services.extraction_s.ProjectRepo',return_value=mock_return_2)
+def test_extraction_service_fails_if_not_status_0_(a,b,c):
+    proj_name = mock_return.name
+
+    result = extraction_s(proj_name)
+
+    b.assert_not_called()
+    c.assert_not_called()
+
+    assert result is False

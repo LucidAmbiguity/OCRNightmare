@@ -30,6 +30,9 @@ from app.types.my_types import ProjDataT
 
 def extraction_s(proj_name:str)->ProjDataT:
     p_repo = ProjectRepo(proj_name)
+    if p_repo.status != 0:
+        return False
+
     filename = p_repo.filename
     path = f'instance/data/{proj_name}'
     orig_file_location = f'{path}/{filename}'
@@ -41,6 +44,9 @@ def extraction_s(proj_name:str)->ProjDataT:
 
 def random_extraction_s(proj_name:str)->ProjDataT:
     p_repo = ProjectRepo(proj_name)
+    if p_repo.status != 0:
+        return False
+
     filename = p_repo.filename
     path = f'instance/data/{proj_name}'
     orig_file_location = f'{path}/{filename}'

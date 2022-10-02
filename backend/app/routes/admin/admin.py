@@ -9,8 +9,10 @@ from app.routes.admin import admin  # type: ignore[no-redef] # pylint: disable=i
 from app.constants.ADMIN import ADMIN
 
 from .users import users
+from .rollback import rollback
 
 admin.register_blueprint(users, url_prefix='/users') # type: ignore[attr-defined]
+admin.register_blueprint(rollback, url_prefix='/rollback') # type: ignore[attr-defined]
 
 
 if TYPE_CHECKING:
