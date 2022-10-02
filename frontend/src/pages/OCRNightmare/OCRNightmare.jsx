@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link, Outlet, useLocation } from 'react-router-dom';
 import Project from './Project';
+import Extract from './Project/Extract';
 import Projects from './Projects';
 
 
@@ -40,6 +41,7 @@ const OCRNightmare = () => {
     <Routes>
       <Route path="projects" element={<Projects />} />
       <Route path="projects/:projName" element={<Project />} />
+      <Route path="projects/:projName/extract" element={<Extract />} />
       {/* <Route path="availableProjects"> */}
         {/* <Route path=":projName" element={<CurrentProject isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}> */}
           {/* <Route path="customers" element={<CustomersView />}> */}
