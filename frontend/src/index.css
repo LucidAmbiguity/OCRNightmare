@@ -1,13 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@700&family=Fascinate+Inline&display=swap');
+
+
+/* font-family:'Catamaran',
+sans-serif;
+font-family:'Fascinate Inline',
+cursive; */
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply bg-stone-50;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container_image {
+  position: absolute;
+  overflow: hidden;
+  background-color: cyan;
+  height: 150px;
+  /* width: 300px; */
+}
+
+.container_form_image {
+  position: absolute;
+  overflow: hidden;
+  background-color: cyan;
+  height: 70px;
+  /* 30 is nice for one liners  */
+  /* 70 is nice for three lines  */
+
+  /* width: 300px; */
+}
+
+.image {
+  position: relative;
+  background-color: rgba(229, 238, 200, 0.4);
+  overflow: hidden;
+  /* height: 120px; */
+  top: 5px;
+}
+
+/* img {
+  position: relative;
+  top: -100px;
+} */
+
+.fascinate {
+  font-family: 'Fascinate Inline';
+}
+
+.btn {
+  @apply font-bold uppercase text-xs px-4 py-2 rounded-full;
+}
+
+.btn-blue {
+  @apply bg-blue-500 text-white;
+}
+
+.btn-blue:hover {
+  @apply bg-blue-700;
+}
+
+.btn-question {
+  @apply bg-indigo-300 text-white;
+}
+
+.btn-question:hover {
+  @apply bg-indigo-700;
+}
+
+.main {
+  @apply max-w-6xl ml-10 mt-6 text-center;
+}
+
+/* font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 */
+.btn-sidebar {
+  /* @apply bg-cyan-500 text-white active:bg-cyan-600
+    shadow hover:shadow-md
+    outline-none focus:outline-none
+    mr-1 mb-1
+    ease-linear transition-all duration-150; */
+  @apply text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80;
 }

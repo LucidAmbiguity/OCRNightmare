@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
-function App() {
+// Components
+import Navbar from './components/Navbar';
+
+// Pages
+import Home from './pages/Home/Home';
+import OCRNightmare from './pages/OCRNightmare/OCRNightmare';
+import E404 from './components/Errors/E404';
+
+const queryClient = new QueryClient();
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Navbar />
+        {/* <Sidebar /> */}
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="ocrNightmare/*" element={<OCRNightmare />} />
+            <Route path="*" element={<E404 />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+      <ReactQueryDevtools initialIsOpen={true} />
+    </QueryClientProvider>
   );
-}
+};
 
 export default App;
