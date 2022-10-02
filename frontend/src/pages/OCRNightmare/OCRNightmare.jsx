@@ -1,8 +1,8 @@
 // Framework
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link, Outlet, useLocation } from 'react-router-dom';
-import Project from '../Project';
-import Projects from '../Projects';
+import Project from './Project';
+import Projects from './Projects';
 
 
 
@@ -13,7 +13,7 @@ const OCRNightmare = () => {
 
   useEffect(() => {
     const path = pathname.slice(-13)
-    if (path == '/ocrNightmare') {
+    if (path === '/ocrNightmare') {
       setIsRootPath(true);
     }else{
       setIsRootPath(false);
