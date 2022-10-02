@@ -52,6 +52,14 @@ const Project = () => {
           </div>
         </div>
       </div>
+
+      <div className="mt-8 text-justify">
+        <div className="w-9/12 mx-auto">
+          <div className="px-6 py-6 odd:bg-white even:bg-slate-100">
+            TEXTLINES
+          </div>
+        </div>
+      </div>
     </>
   )
 }
