@@ -23,7 +23,7 @@
 """
 
 # from app.types.my_types import XtracDoc
-from app.massage import extract_data_all
+from app.massage import extract_data_all,make_svg_bat,extract_data_all_random
 from app.repositories import ProjectRepo
 from app.types.my_types import ProjDataT
 
@@ -31,8 +31,21 @@ from app.types.my_types import ProjDataT
 def extraction_s(proj_name:str)->ProjDataT:
     p_repo = ProjectRepo(proj_name)
     filename = p_repo.filename
-    orig_file_location = f'instance/data/{proj_name}/{filename}'
+    path = f'instance/data/{proj_name}'
+    orig_file_location = f'{path}/{filename}'
 
     captured = extract_data_all(orig_file_location)
     is_saved = p_repo.save_extracted(captured)
+    make_svg_bat.make_svg_bat(filename, path)
+    return is_saved
+
+def random_extraction_s(proj_name:str)->ProjDataT:
+    p_repo = ProjectRepo(proj_name)
+    filename = p_repo.filename
+    path = f'instance/data/{proj_name}'
+    orig_file_location = f'{path}/{filename}'
+
+    captured = extract_data_all_random(orig_file_location)
+    is_saved = p_repo.save_extracted(captured)
+    make_svg_bat.make_svg_bat(filename, path)
     return is_saved

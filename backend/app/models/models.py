@@ -71,13 +71,57 @@ class Project(db.Model): # type: ignore[name-defined]
 class Page(db.Model):
     id: int = db.Column(db.Integer, primary_key=True) # type: ignore[misc]
     project_id: int = db.Column(db.Integer, db.ForeignKey('project.id')) # type: ignore[misc]
+    page_num: int = db.Column(db.Integer,  nullable=False) # type: ignore[misc]
+    width: float = db.Column(db.Float,  nullable=False) # type: ignore[misc]
+    height: float = db.Column(db.Float,  nullable=False) # type: ignore[misc]
+    text_lines: 'TextLine' = db.relationship('TextLine', backref='page', lazy='dynamic')
 
+    def __repr__(self) -> str:
+        return f'<PAGE  id: {self.id}  project_id: {self.project_id}  page_num: {self.page_num}  width: {self.width}  height: {self.height}  text_lines: {cast(int,self.text_lines.count())}  >'  # pylint: disable=line-too-long
 
 class Customer(db.Model):
     id: int = db.Column(db.Integer, primary_key=True) # type: ignore[misc]
     project_id: int = db.Column(db.Integer, db.ForeignKey('project.id')) # type: ignore[misc]
 
 
+class TextLine(db.Model): # type: ignore[name-defined]
+    """
+    TextLine Model of Project
+        id:
+        page_id
+        text_line
+        chars:
+    """
+    # pylint: disable=no-member
+    id: int = db.Column(db.Integer, primary_key=True)  # type: ignore[misc]
+    page_id: int = db.Column(db.Integer, db.ForeignKey('page.id')) # type: ignore[misc]
+    text_line: str = db.Column(db.String(10000),  nullable=False) # type: ignore[misc]
+    chars: 'Character' = db.relationship('Character', backref='text_line', lazy='dynamic')  # pylint: disable=line-too-long
+    # pylint: enable=no-member
 
+
+class Character(db.Model): # type: ignore[name-defined]
+    """
+    Character Model of Project
+        id:
+        text_line_id:
+        char:
+        width:
+        x0: upper left x coordinate of letter on page
+        y0: upper left y coordinate of letter on page
+        x1: lower right x coordinate of letter on page
+        y1: lower right x coordinate of letter on page
+    """
+
+    # pylint: disable=no-member
+    id: int = db.Column(db.Integer, primary_key=True) # type: ignore[misc]
+    text_line_id: int = db.Column(db.Integer, db.ForeignKey('text_line.id')) # type: ignore[misc]
+    char: str = db.Column(db.String(1),  nullable=False) # type: ignore[misc]
+    width: float = db.Column(db.Float(),  nullable=False) # type: ignore[misc]
+    x0: float = db.Column(db.Float(),  nullable=False) # type: ignore[misc]
+    y0: float = db.Column(db.Float(),  nullable=False) # type: ignore[misc]
+    x1: float = db.Column(db.Float(),  nullable=False) # type: ignore[misc]
+    y1: float = db.Column(db.Float(),  nullable=False) # type: ignore[misc]
+    # pylint: enable=no-member
 
 

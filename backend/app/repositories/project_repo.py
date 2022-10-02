@@ -1,17 +1,11 @@
 """A Project Repository"""
-# Possibly unneeded be this small repo
-# However its good practice for untangling the rest of the app
 
-# from app.models import (
-#     project_schema,
-# )
-# from app.ocrnightmare.helpers.my_types import ProjectT
+
 from app.interfaces.db_project_if import DBProjI
 from app.interfaces.db_project_save_extraction_if import DBProjSaveExtractionI
 
-from typing import TYPE_CHECKING, Optional, Type, Union
+from typing import TYPE_CHECKING, Type
 
-from app.types.my_types import PassId, PassIdNone
 from app.types.my_types import ProjDataT
 
 
@@ -46,7 +40,7 @@ class ProjectRepo:
             self.exists = True
 
     def save_extracted(self, captured):
-        is_saved = self._db_p_s_e_i.save(captured)
+        is_saved = self._db_p_s_e_i.save(self.name,captured)
         return is_saved
 
     def get_data(self)->ProjDataT:

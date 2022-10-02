@@ -5,6 +5,8 @@ from .models import (
     User,
     Page,
     Customer,
+    TextLine,
+    Character
 
 )
 

@@ -15,6 +15,10 @@ def test_page_has_expected_attributes():
     page = Page()
     assert hasattr(page,'id')
     assert hasattr(page,'project_id')
+    assert hasattr(page,'page_num')
+    assert hasattr(page,'width')
+    assert hasattr(page,'height')
+    assert hasattr(page,'text_lines')
     assert hasattr(page,'project')
     # query can only be checked within an app context the others come
     # with sqlalchemy
@@ -26,7 +30,7 @@ def test_page_has_expected_attributes():
     assert hasattr(page,'query_class')
     assert hasattr(page,'registry')
     attr_count = attr_counter(page)
-    assert attr_count == 7  # count check will fail if attributes added to model.  # pylint: disable=line-too-long
+    assert attr_count == 11  # count check will fail if attributes added to model.  # pylint: disable=line-too-long
 
 
 @patch('app.extensions.db.session.refresh', return_value = 'junk_value')

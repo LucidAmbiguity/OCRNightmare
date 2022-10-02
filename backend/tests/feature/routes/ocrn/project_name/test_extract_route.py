@@ -37,14 +37,14 @@ proj_mock1 = MockProject(1,PDF_TestFile_Name_Good[:PDF],0,PDF_TestFile_Name_Good
 # @patch('app.services.extraction_s.extraction_s', return_value = proj_mock1)
 
 
-def test_extract_page_get(test_client):
+def test_extract_GET_returns_405(test_client):
     response = test_client.get(Path(proj_mock1.name))
 
     assert response.status_code == 405
     assert is_response_shape_ocrn_error(response.json)
 
 @patch('app.routes.ocrnightmare.bp.extract.extract.extraction_s', return_value = None)
-def test_extract_page_post_doesnotexist(a,test_client):
+def test_extract_POST_project_does_not_exist_returns_404(a,test_client):
 
     response = test_client.post(Path(BAD_ProjName))
 
