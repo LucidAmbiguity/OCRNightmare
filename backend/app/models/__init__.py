@@ -20,4 +20,7 @@ from .schemas import (
     pages_schema,
     customer_schema,
     customers_schema,
+    text_line_schema,
+    text_lines_schema,
+
 )

@@ -50,3 +50,11 @@ class CustomerSchema(ma.Schema):
 customer_schema = CustomerSchema()
 customers_schema = CustomerSchema(many=True)
 
+class TextLineSchema(ma.Schema):
+
+    class Meta:
+        fields = ('id', 'page_id','text_line')
+
+text_line_schema = TextLineSchema()
+text_lines_schema = TextLineSchema(many=True)
+

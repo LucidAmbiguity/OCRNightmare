@@ -7,10 +7,11 @@ from app.interfaces.db_project_save_extraction_if import DBProjSaveExtractionI
 from typing import TYPE_CHECKING, Type
 
 from app.types.my_types import ProjDataT
+from app.models import text_lines_schema
 
 
 if TYPE_CHECKING:
-    from app.models import Project
+    from app.models import Project,Page
     from app.types import ProjectT
 
 
@@ -52,3 +53,13 @@ class ProjectRepo:
                 pages = self.pages,
                 customers = self.customers,
             )
+
+    def get_all_text_lines(self):
+        pages:list['Page'] = self._project_db.pages.all()
+        text_lines = []
+        for page in pages:
+            lines = page.text_lines.all()
+
+            text_lines += lines
+        t_ls = text_lines_schema.dump(text_lines)
+        return t_ls
