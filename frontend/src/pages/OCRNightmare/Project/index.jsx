@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import { useGetProject } from '../../../hooks/useRQHooks';
 import ProjData from '../components/ProjData';
 
@@ -10,12 +10,6 @@ const Project = () => {
   const { data:proj_data } = useGetProject(projName, { enabled: !!projName });
 
   // const { pathname } = useLocation();
-  const handleClickS0 = () => {
-    console.log('Project: handleClick')
-  }
-  const handleClickS1 = () => {
-    console.log('Project: handleClick')
-  }
 
 
   return (
@@ -40,13 +34,24 @@ const Project = () => {
             <div className="grid  grid-cols-3 gap-x-10">
               {
                 proj_data?.status === 0 ?
-                  <button onClick={handleClickS0}>Extract</button>
-                  : <button className="text-gray-400">Extract</button>
+                  <Link to='extract'>
+                    <p>Extract</p>
+                  </Link>
+                  : <p className="text-gray-400">Extract</p>
               }
               {
                 proj_data?.status === 1 ?
-                  <button onClick={handleClickS1}>View TextLines</button>
-                  : <button className="text-gray-400">View TextLines</button>
+                  <Link to='text_lines'>
+                    <p>View TextLines</p>
+                  </Link>
+                  : <p className="text-gray-400">View TextLines</p>
+              }
+              {
+                proj_data?.status === 1 ?
+                  <Link to='pages'>
+                    <p>View Pages</p>
+                  </Link>
+                  : <p className="text-gray-400">View Pages</p>
               }
             </div>
           </div>
@@ -56,7 +61,7 @@ const Project = () => {
       <div className="mt-8 text-justify">
         <div className="w-9/12 mx-auto">
           <div className="px-6 py-6 odd:bg-white even:bg-slate-100">
-            TEXTLINES
+            <Outlet />
           </div>
         </div>
       </div>

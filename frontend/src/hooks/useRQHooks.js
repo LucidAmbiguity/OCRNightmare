@@ -61,3 +61,67 @@ const getProject = async ({ queryKey }) => {
 export const useGetProject = (projName, conObj) => {
   return useQuery(['project', projName], getProject, conObj);
 };
+
+// # TextLines List
+const getTextLines = async ({ queryKey }) => {
+  // eslint-disable-next-line no-unused-vars
+  const [_key, projName] = queryKey;
+  const temp = await getBasicFetch(`${APIPoints.PROJECT}/${projName}/text_lines`);
+
+  return temp.result.text_lines;
+};
+
+export const useGetTextLines = (projName, conObj) => {
+  return useQuery(['textLines', projName], getTextLines, {
+    ...conObj,
+    refetchOnWindowFocus: false,
+  });
+};
+
+// # Pages List
+const getPages = async ({ queryKey }) => {
+  // eslint-disable-next-line no-unused-vars
+  const [_key, projName] = queryKey;
+  const temp = await getBasicFetch(`${APIPoints.PROJECT}/${projName}/pages`);
+
+  return temp.result.pages;
+};
+
+export const useGetPages = (projName, conObj) => {
+  return useQuery(['pages', projName], getPages, {
+    ...conObj,
+    refetchOnWindowFocus: false,
+  });
+};
+
+// # Page List
+const getPage = async ({ queryKey }) => {
+  // eslint-disable-next-line no-unused-vars
+  const [_key, projName, page_id] = queryKey;
+  const temp = await getBasicFetch(`${APIPoints.PROJECT}/${projName}/pages/${page_id}`);
+
+  return temp.result.page;
+};
+
+export const useGetPage = (projName, page_id, conObj) => {
+  return useQuery(['page', projName, page_id], getPage, {
+    ...conObj,
+    refetchOnWindowFocus: false,
+  });
+};
+
+// # Page List
+const GetPageWTL = async ({ queryKey }) => {
+  // eslint-disable-next-line no-unused-vars
+  const [_key, projName, page_id] = queryKey;
+  const temp = await getBasicFetch(`${APIPoints.PROJECT}/${projName}/pages/${page_id}/w_tl`);
+
+  return temp.result.page;
+};
+
+export const useGetPageWTL = (projName, page_id, conObj) => {
+  return useQuery(['page', projName, page_id], GetPageWTL, {
+    ...conObj,
+    refetchOnWindowFocus: false,
+  });
+};

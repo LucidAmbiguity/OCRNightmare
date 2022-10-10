@@ -1,11 +1,10 @@
-import { useEffect } from "react"
+// import { useEffect } from "react"
 
 const ProjData = ({proj_data}) => {
-  useEffect(() => {
-    console.log('ProjData',proj_data)
 
-
-  }, [proj_data])
+  // useEffect(() => {
+  //   console.log('ProjData',proj_data)
+  // }, [proj_data])
 
   return (
     <>

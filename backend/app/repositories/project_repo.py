@@ -7,7 +7,7 @@ from app.interfaces.db_project_save_extraction_if import DBProjSaveExtractionI
 from typing import TYPE_CHECKING, Type
 
 from app.types.my_types import ProjDataT
-from app.models import text_lines_schema
+from app.models import text_lines_schema,pages_schema,page_schema
 
 
 if TYPE_CHECKING:
@@ -63,3 +63,33 @@ class ProjectRepo:
             text_lines += lines
         t_ls = text_lines_schema.dump(text_lines)
         return t_ls
+
+    def get_all_pages(self):
+        pages:list['Page'] = self._project_db.pages.all()
+        result = pages_schema.dump(pages)
+
+        return result
+
+    def get_page(self,page_id:int):
+        page:'Page'= self._project_db.pages.filter_by(id=page_id).first()
+
+        if page is None:
+            return None
+        result = page_schema.dump(page)
+
+        return result
+
+    def get_page_w_text(self,page_id:int):
+        page:'Page'= self._project_db.pages.filter_by(id=page_id).first()
+
+        if page is None:
+            return None
+        text_lines = page.text_lines.all()
+        t_ls = text_lines_schema.dump(text_lines)
+        p_sch = page_schema.dump(page)
+        p_sch['text_lines'] = t_ls
+
+
+        return p_sch
+
+

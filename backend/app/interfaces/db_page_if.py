@@ -1,6 +1,7 @@
 """ DB Page Interface Thingy """
 
 
+from typing import Optional, cast
 from app.types.my_types import NewPageTup
 from app.extensions import db
 from app.models import  Page
@@ -23,3 +24,9 @@ class DBPageI:
         db.session.commit() # type: ignore[misc] # pylint: disable=no-member
         db.session.refresh(new_page_db) # type: ignore[misc]
         return new_page_db
+
+
+    def get_page_by_id(self, uid:Optional[int])->Optional[Page]:
+        return cast( Page, Page.query.filter_by(id=uid).first()) # type: ignore[misc]
+
+
