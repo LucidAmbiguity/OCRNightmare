@@ -49,7 +49,7 @@ const OCRNightmare = () => {
         <Route path="extract" element={<Extract />} />
         <Route path="text_lines" element={<TextLines />} />
         <Route path="pages" element={<Pages />} />
-        <Route path="pages/:page_id" element={<Page />} >
+        <Route path="pages/:page_id" element={<PageWTL />} >
           <Route path="w_tl" element={<PageWTL />} />
 
         </Route>

@@ -111,16 +111,16 @@ export const useGetPage = (projName, page_id, conObj) => {
 };
 
 // # Page List
-const GetPageWTL = async ({ queryKey }) => {
+const getPageWTL = async ({ queryKey }) => {
   // eslint-disable-next-line no-unused-vars
   const [_key, projName, page_id] = queryKey;
   const temp = await getBasicFetch(`${APIPoints.PROJECT}/${projName}/pages/${page_id}/w_tl`);
-
+  console.log('getPageWTL', temp);
   return temp.result.page;
 };
 
 export const useGetPageWTL = (projName, page_id, conObj) => {
-  return useQuery(['page', projName, page_id], GetPageWTL, {
+  return useQuery(['pagewtl', projName, page_id], getPageWTL, {
     ...conObj,
     refetchOnWindowFocus: false,
   });

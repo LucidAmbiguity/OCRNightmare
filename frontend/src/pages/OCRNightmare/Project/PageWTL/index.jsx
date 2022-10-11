@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useGetPageWTL } from '../../../../hooks/useRQHooks'
 
 
@@ -9,37 +9,44 @@ import { useGetPageWTL } from '../../../../hooks/useRQHooks'
 const PageWTL = () => {
 
   let { projName, page_id:pageId } = useParams();
-  const { data:pageWTL, refetch, isLoading, isIdle } = useGetPageWTL(projName, pageId,{ enabled: false });
+  const { data:pageWTL, refetch, isLoading, isIdle, isFetching } = useGetPageWTL(projName, pageId,{ enabled: true });
 
   useEffect(() => {
-   console.log('Page data:',pageWTL,':',projName, pageId)
+   console.log('Page data w_tl:',pageWTL,':',projName, pageId)
   }, [pageWTL,pageId,projName]);
 
-   return (
+
+  return (
     <>
-      <div>PageWTL</div>
-      <button onClick={refetch} className="btn">
-        Click Me TO get PageWTL
-      </button>
-      <div>for {projName}</div>
+
       <div className='mt-8'>
+        <p>{isFetching && 'FETCHING ...'}</p>
         <p>{isLoading && 'LOADING ...'}</p>
         <p>{isIdle && 'isIdle ...'}</p>
+        <p className='flex'>{pageWTL ? (
+          <>
+            <Link
+              className='grow '
+              to={`../pages/${parseInt(pageId)-1}`}>
+                Previous
+            </Link>:
+            <Link
+              className='grow text-right'
+              to={`../pages/${parseInt(pageId)+1}`}>
+                Next
+            </Link>
+          </>
+          ):
+          ('Almost') }
+        </p>
+
         <pre>
-          {
-            <p key={pageWTL?.id}>
-              <span>
-                {pageWTL?.id}
-              </span>
-              <span> </span>
-               {pageWTL?.project_id} {projName}
-            </p>
-          }
+
           <div>
-            {pageWTL?.text_lines.map((line)=>{
+            {pageWTL?.text_lines?.map((line)=>{
               return (<p key={line?.id}>
-                {line.id}
-                {line.page_id}
+                {line.id}:
+                {line.page_id}:
                 {line.text_line}
               </p>
               )
