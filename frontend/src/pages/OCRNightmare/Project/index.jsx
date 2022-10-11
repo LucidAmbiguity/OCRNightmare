@@ -53,6 +53,13 @@ const Project = () => {
                   </Link>
                   : <p className="text-gray-400">View Pages</p>
               }
+              {
+                proj_data?.status === 1 ?
+                  <Link to='headers'>
+                    <p>Select Headers</p>
+                  </Link>
+                  : <p className="text-gray-400">Select Headers Pages</p>
+              }
             </div>
           </div>
         </div>

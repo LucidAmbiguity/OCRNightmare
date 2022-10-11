@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link, Outlet, useLocation } from 'react-router-dom';
 import Project from './Project';
 import Extract from './Project/Extract';
-import Page from './Project/Page';
+import Headers from './Project/Headers';
 import Pages from './Project/Pages';
+import PageWiSelectLine from './Project/PageWiSelectLine';
 import PageWTL from './Project/PageWTL';
+import SelectHeaderLine from './Project/SelectHeaderLine';
 
 import TextLines from './Project/TextLines';
 import Projects from './Projects';
@@ -49,13 +51,16 @@ const OCRNightmare = () => {
         <Route path="extract" element={<Extract />} />
         <Route path="text_lines" element={<TextLines />} />
         <Route path="pages" element={<Pages />} />
-        <Route path="pages/:page_id" element={<PageWTL />} >
+        <Route path="pages/:page_id" element={<PageWiSelectLine />} >
           <Route path="w_tl" element={<PageWTL />} />
-
+        </Route>
+        <Route path="headers" element={<Headers />} />
+        <Route path="headers/:page_id" element={<SelectHeaderLine />} >
+          <Route path="w_tl" element={<PageWTL />} />
         </Route>
       </Route>
 
-</Routes>
+    </Routes>
 
     <div>
        <Outlet />
